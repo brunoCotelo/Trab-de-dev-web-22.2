@@ -1,0 +1,18 @@
+body{
+    font: 20px Arial, sans-serif;
+    font-weight: bold;
+}
+
+.fontColor{
+    color : white;
+}
+
+
+.margin{
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+
+.marginLeft{
+    padding-left: 30px;
+}
