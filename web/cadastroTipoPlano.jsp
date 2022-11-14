@@ -16,33 +16,12 @@
             <a class="navbar-brand" href="#">
                 <img src="imagens/download.png" width="100" height="100">
             </a>
-            <li>
-                <a class="nav-link" href="./login.jsp">Login</a> 
-            </li>
-            <li>
-                <a class="nav-link" href="./cadastroAdministrador.jsp">Adm</a> 
-            </li>
-            <li>
-                <a class="nav-link" href="./cadastroConsulta.jsp">Consulta</a> 
-            </li>
-            <li>
-                <a class="nav-link" href="./cadastroEspecialidade.jsp">Especialidade</a> 
-            </li>
-            <li>
-                <a class="nav-link" href="./cadastroExame.jsp">Exame</a> 
-            </li>
-            <li>
-                <a class="nav-link" href="./cadastroMedico.jsp">Medico</a> 
-            </li>
-            <li>
-                <a class="nav-link" href="./cadastroTipoExame.jsp">Tipo exame</a> 
-            </li>
-            <li>
-                <a class="nav-link" href="./cadastroPaciente.jsp">Paciente</a> 
-            </li>
-            <li>
-                <a class="nav-link" href="./cadastroTipoPlano.jsp">Tipo plano</a> 
-            </li>
+            <div>
+                <a class="nav-link" href="./menuPaciente.jsp">Menu</a>
+            </div>
+            <div>
+                <a class="nav-link" href="./login.jsp">Logout</a>
+            </div>
         </nav>
     </header>
     <section id="formCadastroTipoPlano">

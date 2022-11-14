@@ -7,6 +7,11 @@
         <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
         <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
         <title>Cadastro do Paciente</title>
+            <script language="JavaSript">
+            function retornar() {
+                history.go(-1);
+            }
+        </script>
     </head>
 
     <body style="background-color: rgb(210, 240, 245);">
@@ -18,29 +23,7 @@
                 <li>
                     <a class="nav-link" href="./login.jsp">Login</a> 
                 </li>
-                <li>
-                    <a class="nav-link" href="./cadastroAdministrador.jsp">Adm</a> 
-                </li>
-                <li>
-                    <a class="nav-link" href="./cadastroConsulta.jsp">Consulta</a> 
-                </li>
-                <li>
-                    <a class="nav-link" href="./cadastroEspecialidade.jsp">Especialidade</a> 
-                </li>
-                <li>
-                    <a class="nav-link" href="./cadastroExame.jsp">Exame</a> 
-                </li>
-                <li>
-                    <a class="nav-link" href="./cadastroMedico.jsp">Medico</a> 
-                </li>
-                <li>
-                    <a class="nav-link" href="./cadastroTipoExame.jsp">Tipo exame</a> 
-                </li>
-                <li>
-                    <a class="nav-link" href="./cadastroPaciente.jsp">Paciente</a> 
-                </li>
-                <li>
-                    <a class="nav-link" href="./cadastroTipoPlano.jsp">Tipo plano</a> 
+                    <a class="nav-link" href="./cadastroPaciente.jsp">Cadastro Paciente</a> 
                 </li>
             </nav>
         </header>
@@ -70,13 +53,11 @@
                         </div>
                         <div class="row">
                             <div class="mx-auto margin" style="width: 200px;">
-                                <button type="submit" class="btn btn-primary">Cadastrar Paciente</button>
+                                <button type="submit" class="btn btn-primary">Cadastrar</button>
                             </div>
                         </div>
-                    </div>
                 </form>
             </div>
         </section>
     </body>
-
 </html>

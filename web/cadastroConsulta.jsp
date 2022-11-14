@@ -14,35 +14,14 @@
         <header>
             <nav class="navbar navbar-light bg-faded" style="background-color: rgb(0, 0, 0); border-color: #000;">
                 <a class="navbar-brand" href="#">
-                    <img src="imagens/download.png" width="100" height="100">
-                </a>
-                <li>
-                    <a class="nav-link" href="./login.jsp">Login</a> 
-                </li>
-                <li>
-                    <a class="nav-link" href="./cadastroAdministrador.jsp">Adm</a> 
-                </li>
-                <li>
-                    <a class="nav-link" href="./cadastroConsulta.jsp">Consulta</a> 
-                </li>
-                <li>
-                    <a class="nav-link" href="./cadastroEspecialidade.jsp">Especialidade</a> 
-                </li>
-                <li>
-                    <a class="nav-link" href="./cadastroExame.jsp">Exame</a> 
-                </li>
-                <li>
-                    <a class="nav-link" href="./cadastroMedico.jsp">Medico</a> 
-                </li>
-                <li>
-                    <a class="nav-link" href="./cadastroTipoExame.jsp">Tipo exame</a> 
-                </li>
-                <li>
-                    <a class="nav-link" href="./cadastroPaciente.jsp">Paciente</a> 
-                </li>
-                <li>
-                    <a class="nav-link" href="./cadastroTipoPlano.jsp">Tipo plano</a> 
-                </li>
+                <img src="imagens/download.png" width="100" height="100">
+            </a>
+            <div>
+                <a class="nav-link" href="./menuMedico.jsp">Menu</a>
+            </div>
+            <div>
+                <a class="nav-link" href="./login.jsp">Logout</a>
+            </div>
             </nav>
         </header>
 
@@ -57,7 +36,7 @@
                                 <input class="form-control" id="inputDataConsulta" placeholder="dd/mm/aaaa">
                             </div>
                             <div class="container-fluid col-lg-8 mx-auto margin">
-                                <label for="descricaoConsulta" class="form-label"><b>DescriÃ§Ã£o da consulta</b></label>
+                                <label for="descricaoConsulta" class="form-label"><b>Descrição da consulta</b></label>
                                 <input class="form-control" id="inputDescricaoConsulta">
                             </div>
                             <div class="container-fluid col-lg-2 mx-auto margin">
@@ -65,7 +44,7 @@
                                 <input class="form-control" id="inputRealizadaConsulta">
                             </div>
                             <div class="container-fluid col-lg-2 mx-auto margin">
-                                <label for="idMedicoConsulta" class="form-label"><b>ID do mÃ©dico</b></label>
+                                <label for="idMedicoConsulta" class="form-label"><b>ID do médico</b></label>
                                 <input class="form-control" id="inputIDMedicoConsulta">
                             </div>
                             <div class="container-fluid col-lg-2 mx-auto margin">

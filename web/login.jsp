@@ -16,33 +16,18 @@
             <a class="navbar-brand" href="#">
                 <img src="imagens/download.png" width="100" height="100">
             </a>
-            <li>
-                <a class="nav-link" href="./login.jsp">Login</a> 
-            </li>
-            <li>
-                <a class="nav-link" href="./cadastroAdministrador.jsp">Adm</a> 
-            </li>
-            <li>
-                <a class="nav-link" href="./cadastroConsulta.jsp">Consulta</a> 
-            </li>
-            <li>
-                <a class="nav-link" href="./cadastroEspecialidade.jsp">Especialidade</a> 
-            </li>
-            <li>
-                <a class="nav-link" href="./cadastroExame.jsp">Exame</a> 
-            </li>
-            <li>
-                <a class="nav-link" href="./cadastroMedico.jsp">Medico</a> 
-            </li>
-            <li>
-                <a class="nav-link" href="./cadastroTipoExame.jsp">Tipo exame</a> 
-            </li>
-            <li>
-                <a class="nav-link" href="./cadastroPaciente.jsp">Paciente</a> 
-            </li>
-            <li>
-                <a class="nav-link" href="./cadastroTipoPlano.jsp">Tipo plano</a> 
-            </li>
+            <div>
+                <a class="nav-link" href="./login.jsp">Login</a>
+            </div>
+            <div>
+               <a class="nav-link" href="./cadastroPaciente.jsp">Cadastro</a>  
+            </div>
+            <div>
+                <a class="nav-link" href="./menuPaciente.jsp">Menu paciente</a>
+            </div>
+            <div>
+                <a class="nav-link" href="./menuMedico.jsp">Menu médico</a>
+            </div>
         </nav>
     </header>
     <section id="formLogin">
@@ -65,9 +50,9 @@
                     <div class="form-group col-lg-3 mx-auto margin">
                         <label><b>Selecione a especialidade</b></label>
                         <select name="roles">
-                            <option value="paciente">Admnistrador</option>
-                            <option value="paciente">Médico</option>
                             <option value="paciente">Paciente</option>
+                            <option value="medico">Médico</option>
+                            <option value="adm">Administrador</option>
                         </select><br><br>
                     </div>
                     <div class="container-fluid">
