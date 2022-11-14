@@ -24,6 +24,26 @@
             </div>
         </nav>
     </header>
+     <section id="formCadastroConsulta">
+            <h2 style="text-align: center;" class="margin">Suas consultas</h2>
+            <div class="container-fluid formCadastroConsulta">
+                <form>
+                    <div class="container">
+                        <div class="row">
+                            <div class="container-fluid col-lg-2 mx-auto margin">
+                                <label for="dataConsulta" class="form-label"><b>Data da consulta</b></label>
+                                <input class="form-control" id="inputDataConsulta" placeholder="dd/mm/aaaa">
+                            </div>
+                            <div class="container-fluid col-lg-2 mx-auto margin">
+                                <label for="idPacienteConsulta" class="form-label"><b>Especialidade do médico</b></label>
+                                <input class="form-control" id="inputIDDaEspecialidade">
+                            </div>
+                            <div class="container-fluid col-lg-2 mx-auto margin">
+                                <label for="realizadaConsulta" class="form-label"><b>Consulta realizada?</b></label>
+                                <input class="form-control" id="inputRealizadaConsulta">
+                            </div>
+                        </div>
+    
     <h1>Fazer a tabela do crude do trabalho de eng de soft</h1>
     </body>
 </html>

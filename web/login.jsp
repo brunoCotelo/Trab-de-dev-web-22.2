@@ -26,7 +26,7 @@
                 <a class="nav-link" href="./menuPaciente.jsp">Menu paciente</a>
             </div>
             <div>
-                <a class="nav-link" href="./menuMedico.jsp">Menu médico</a>
+                <a class="nav-link" href="./menuMedicoConsulta.jsp">Menu médico</a>
             </div>
         </nav>
     </header>

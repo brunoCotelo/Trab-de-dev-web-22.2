@@ -17,7 +17,7 @@
                 <img src="imagens/download.png" width="100" height="100">
             </a>
             <div>
-                <a class="nav-link" href="./menuMedico.jsp">Menu</a>
+                <a class="nav-link" href="./menuMedicoConsulta.jsp">Menu</a>
             </div>
             <div>
                 <a class="nav-link" href="./login.jsp">Logout</a>
@@ -57,6 +57,7 @@
                             </div>
                         </div>
                     </div>
+                        <h1>Fazer a tabela do programa do trabalho de eng de soft</h1>
                 </form>
             </div>
         </section>
