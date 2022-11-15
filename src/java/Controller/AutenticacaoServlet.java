@@ -5,8 +5,10 @@
  */
 package Controller;
 
+import com.mysql.jdbc.Connection;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,6 +31,25 @@ public class AutenticacaoServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+   /** 
+    @Override
+    
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException{
+        String nome_user = request.getParameter("cpf");
+        String senha_user = request.getParameter("senha");
+        if (nome_user.isEmpty() || senha_user.isEmpty()) {
+            RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
+            rd.forward(request, response);
+        } else {
+            Connection conexao = null;
+            try {
+                Class.forName("com.mysq.jdbc.Driver");
+            }
+        }
+    }
+    **/
+            
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");

@@ -36,18 +36,18 @@
     <section id="formLogin">
         <h2 style="text-align: center;" class="margin">Login no sistema</h2>
         <div class="container-fluid formLogin">
-            <form  action="/login" method="post">
+            <form  action="Autentica?acao=logar" method="POST">
                 <div class="container">
                     <div class="row">
                         <div class="container-fluid col-lg-3 mx-auto margin">
-                            <label for="CPFFuncLogin" class="form-label"><b>CPF</b></label>
-                            <input name="cpf" class="form-control" id="inputCPFFuncLogin">
+                            <label for="cpf" class="form-label"><b>CPF</b></label>
+                            <input name="cpf" class="form-control">
                         </div>
                     </div>
                     <div class="row">
                         <div class="container-fluid col-lg-3 mx-auto margin">
-                            <label for="senhaFuncLogin" class="form-label"><b>Senha</b></label>
-                            <input name="senha" type="password" class="form-control" id="inputSenhaFuncLogin">
+                            <label for="senha" class="form-label"><b>Senha</b></label>
+                            <input name="senha" type="password" class="form-control">
                         </div>
                     </div>
                     <div class="form-group col-lg-3 mx-auto margin">
@@ -55,12 +55,12 @@
                         <select name="roles">
                             <option value="paciente">Paciente</option>
                             <option value="medico">Médico</option>
-                            <option value="adm">Administrador</option>
+                            <option value="administrador">Administrador</option>
                         </select><br><br>
                     </div>
                     <div class="container-fluid">
                         <div class="mx-auto margin" style="width: 200px;">
-                            <input type="submit" value="Fazer login" class="btn btn-primary"/>
+                            <input type="submit" value="Enviar" class="btn btn-primary"/>
                         </div>
                         <div class="mx-auto margin" style="width: 200px;">
                             <a class="btn btn-primary" href="./cadastroPaciente.jsp" role="button">Cadastre-se</a>
