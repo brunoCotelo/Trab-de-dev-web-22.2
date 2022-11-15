@@ -12,7 +12,7 @@
 
 <body style="background-color: rgb(210, 240, 245);">
     <header>
-        <nav class="navbar navbar-light bg-faded" style="background-color: rgb(0, 0, 0); border-color: #000;">
+        <nav class="navbar navbar-light bg-faded" style="background-color: rgb(0, 0, 0); border-color: #000; justify-content: normal;">
             <a class="navbar-brand" href="#">
                 <img src="imagens/download.png" width="100" height="100">
             </a>
@@ -21,6 +21,9 @@
             </div>
             <div>
                <a class="nav-link" href="./cadastroPaciente.jsp">Cadastro</a>  
+            </div>
+            <div>
+               <a class="nav-link" href="./listaDeEspecialidades.jsp">Especialidades</a>  
             </div>
             <div>
                 <a class="nav-link" href="./menuPaciente.jsp">Menu paciente</a>

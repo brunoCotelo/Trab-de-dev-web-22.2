@@ -11,11 +11,11 @@ package Aplicacao.Atores;
  */
 public class Paciente {
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -51,18 +51,36 @@ public class Paciente {
         this.autorizado = autorizado;
     }
 
-    public String getIdtipoplano() {
+    public int getIdtipoplano() {
         return idtipoplano;
     }
 
-    public void setIdtipoplano(String idtipoplano) {
+    public void setIdtipoplano(int idtipoplano) {
         this.idtipoplano = idtipoplano;
     }
+
+    public Paciente(int id, String nome, String cpf, String senha, String autorizado, int idtipoplano) {
+        this.id = id;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.senha = senha;
+        this.autorizado = autorizado;
+        this.idtipoplano = idtipoplano;
+    }
+
+    public Paciente(String cpf, String senha) {
+        this.cpf = cpf;
+        this.senha = senha;
+    }
     
-    private String id;
+    public Paciente() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    private int id;
     private String nome;
     private String cpf;
     private String senha;
     private String autorizado;
-    private String idtipoplano;
+    private int idtipoplano;
 }

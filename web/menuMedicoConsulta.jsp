@@ -12,7 +12,7 @@
 
     <body style="background-color: rgb(210, 240, 245);">
         <header>
-            <nav class="navbar navbar-light bg-faded" style="background-color: rgb(0, 0, 0); border-color: #000;">
+            <nav class="navbar navbar-light bg-faded" style="background-color: rgb(0, 0, 0); border-color: #000; justify-content: normal;">
                 <a class="navbar-brand" href="#">
                 <img src="imagens/download.png" width="100" height="100">
             </a>
@@ -31,11 +31,11 @@
                 <form>
                     <div class="container">
                         <div class="row">
-                            <div class="container-fluid col-lg-2 mx-auto margin">
+                            <div class="container-fluid col-sm-2 mx-auto margin">
                                 <label for="dataConsulta" class="form-label"><b>Data da consulta</b></label>
                                 <input class="form-control" id="inputDataConsulta" placeholder="dd/mm/aaaa">
                             </div>
-                            <div class="container-fluid col-lg-8 mx-auto margin">
+                            <div class="container-fluid col-md-8 mx-auto margin">
                                 <label for="descricaoConsulta" class="form-label"><b>Descrição da consulta</b></label>
                                 <input class="form-control" id="inputDescricaoConsulta">
                             </div>
