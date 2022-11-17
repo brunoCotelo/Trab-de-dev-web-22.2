@@ -12,8 +12,36 @@ package Aplicacao.Atores;
 public class Medico extends Usuario {
 
     private static int perfil = 1;
-    
 
+    public Medico(String nome, int crm, String estadocrm, String cpf, String senha, String autorizado, int idespecialidade) {
+        super(nome, cpf, senha);
+        this.crm = crm;
+        this.estadocrm = estadocrm;
+        this.autorizado = autorizado;
+        this.idespecialidade = idespecialidade;
+    }
+
+    public Medico() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Medico(int id, String nome, int crm, String estadocrm, String cpf, String senha, String autorizado, int idespecialidade) {
+        super(nome, cpf, senha);
+        this.id = id;
+        this.crm = crm;
+        this.estadocrm = estadocrm;
+        this.autorizado = autorizado;
+        this.idespecialidade = idespecialidade;
+    }
+
+     public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public int getCrm() {
         return crm;
     }
@@ -46,11 +74,9 @@ public class Medico extends Usuario {
         this.idespecialidade = idespecialidade;
     }
 
-    private String nome;
+    private int id;
     private int crm;
     private String estadocrm;
-    private String cpf;
-    private String senha;
     private String autorizado;
     private int idespecialidade;
 }

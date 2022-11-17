@@ -12,6 +12,11 @@ package Aplicacao.Atores;
 public class Paciente extends Usuario {
 
     private static int perfil = 0;
+
+    public Paciente(String nome, String cpf, String senha, String autorizado) {
+        super(nome, cpf, senha);
+        this.autorizado = autorizado;
+    }
     
 
     public String getAutorizado() {
@@ -30,8 +35,17 @@ public class Paciente extends Usuario {
         this.idtipoplano = idtipoplano;
     }
 
+     public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public Paciente(int id, String nome, String cpf, String senha, String autorizado, int idtipoplano) {
-        super(id, nome, cpf, senha);
+        super(nome, cpf, senha);
+        this.id = id;
         this.autorizado = autorizado;
         this.idtipoplano = idtipoplano;
     }
@@ -44,7 +58,7 @@ public class Paciente extends Usuario {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
- 
+    private int id;
     private String autorizado;
     private int idtipoplano;
 

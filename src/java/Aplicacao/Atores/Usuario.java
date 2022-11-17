@@ -10,19 +10,12 @@ package Aplicacao.Atores;
  * @author bruno
  */
 public class Usuario {
-    
-    private int id;
+   
     private String nome;
     private String cpf;
     private String senha;
     
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+   
     
     public String getNome() {
         return nome;
@@ -48,8 +41,7 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public Usuario(int id, String nome, String cpf, String senha) {
-        this.id = id;
+    public Usuario(String nome, String cpf, String senha) {
         this.nome = nome;
         this.cpf = cpf;
         this.senha = senha;

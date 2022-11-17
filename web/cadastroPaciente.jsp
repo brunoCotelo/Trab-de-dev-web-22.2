@@ -7,11 +7,6 @@
         <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
         <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
         <title>Cadastro do Paciente</title>
-            <script language="JavaSript">
-            function retornar() {
-                history.go(-1);
-            }
-        </script>
     </head>
 
     <body style="background-color: rgb(210, 240, 245);">
@@ -35,29 +30,37 @@
         <section id="formCadstroPaciente">
             <h2 style="text-align: center;" class="margin"> Cadastro de um paciente</h2>
             <div class="container-fluid formCadstroPaciente">
-                <form>
+                <form action="/PacienteServlet" method="POST">
                     <div class="container">
+                        <input hidden name ="acao" id="acao" value="cadastrar">
                         <div class="row">
                             <div class="mb-auto col-lg-4 mx-auto">
-                                <label for="nomePaciente" class="form-label"><b>Nome</b></label>
-                                <input class="form-control" id="inputNomePaciente">
+                                <label for="nomeee" class="form-label"><b>Nome</b></label>
+                                <input name="nome" class="form-control" id="nome">
                             </div>
                             <div class="mb-auto col-lg-2 mx-auto">
-                                <label for="cpfPaciente" class="form-label"><b>CPF</b></label>
-                                <input class="form-control" id="inputCPFPaciente" placeholder="______.______.______-____">
+                                <label for="cpf" class="form-label"><b>CPF</b></label>
+                                <input name="cpf" class="form-control" id="cpf" placeholder="______.______.______-____">
                             </div>
                             <div class="container-fluid col-lg-2 mx-auto">
-                                <label for="senhaFuncLogin" class="form-label"><b>Senha</b></label>
-                                <input name="senha" type="password" class="form-control" id="inputSenhaFuncLogin">
+                                <label for="senha" class="form-label"><b>Senha</b></label>
+                                <input name="senha" type="password" class="form-control" id="senha">
                             </div>
-                            <div class="mb-auto col-lg-1 mx-auto">
-                                <label for="autorizadoPaciente" class="form-label"><b>Autorizado</b></label>
-                                <input class="form-control" id="inputAutorizadoPaciente">
+                            <!--<div class="mb-auto col-lg-1 mx-auto">
+                                <label for="autorizado" class="form-label"><b>Autorizado</b></label>
+                                <input name="autorizado" class="form-control" id="autorizado">
+                            </div> -->
+                            <div class="form-group col-lg-3 mx-auto margin">
+                                <label for="autorizado"><b>Autorizado</b></label>
+                                <select name="autorizado">
+                                    <option value="S">Sim</option>
+                                    <option value="N">Não</option>
+                                </select><br><br>
                             </div>
                         </div>
                         <div class="row">
                             <div class="mx-auto margin" style="width: 200px;">
-                                <button type="submit" class="btn btn-primary">Cadastrar</button>
+                                <button type="submit" name="btEnviar" class="btn btn-primary">Cadastrar</button>
                             </div>
                         </div>
                 </form>
