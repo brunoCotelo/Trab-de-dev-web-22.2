@@ -70,13 +70,13 @@ public class PacienteServlet extends HttpServlet {
         String cpf_user = request.getParameter("cpf");
         String senha_user = request.getParameter("senha");
         String autorizado_user = request.getParameter("autorizado");
-        String btEnviar = request.getParameter("btEnviar");
+        String acao = request.getParameter("acao");
 
         RequestDispatcher rd;
 
         if (nome_user.isEmpty() || cpf_user.isEmpty() || senha_user.isEmpty() || autorizado_user.isEmpty()) {
             Paciente paciente = new Paciente();
-            switch (btEnviar) {
+            switch (acao) {
                 case "cadastrar":
                     request.setAttribute("acao", "cadastrar");
                     break;
@@ -102,10 +102,11 @@ public class PacienteServlet extends HttpServlet {
             //paciente.setId(id);
             PacienteDAO pacienteDAO = new PacienteDAO();
             try {
-                switch (btEnviar) {
+                switch (acao) {
                     case "cadastrar":
                         System.out.print("case cadastro");
                         pacienteDAO.Inserir(paciente);
+                        System.out.print("case cadastro2");
                         request.setAttribute("msgOperacaoRealizada", "Inclusão realizada com sucesso");
                         break;
 //                    case "Alterar":
