@@ -45,6 +45,7 @@ public class Autentica extends HttpServlet {
         // pegando os parâmetros do request
         String cpf_user = request.getParameter("cpf");
         String senha_user = request.getParameter("senha");
+        int perfil = 1;
         if (cpf_user.isEmpty() || senha_user.isEmpty()) {
             // dados não foram preenchidos retorna ao formulário
             request.setAttribute("msgError", "Usuário e/ou senha incorreto");

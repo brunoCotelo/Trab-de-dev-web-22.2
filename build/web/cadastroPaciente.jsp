@@ -30,12 +30,12 @@
         <section id="formCadstroPaciente">
             <h2 style="text-align: center;" class="margin"> Cadastro de um paciente</h2>
             <div class="container-fluid formCadstroPaciente">
-                <form action="/PacienteServlet" method="POST">
+                <form action="PacienteServlet" method="POST">
                     <div class="container">
                         <input hidden name ="acao" id="acao" value="cadastrar">
                         <div class="row">
                             <div class="mb-auto col-lg-4 mx-auto">
-                                <label for="nomeee" class="form-label"><b>Nome</b></label>
+                                <label for="nome" class="form-label"><b>Nome</b></label>
                                 <input name="nome" class="form-control" id="nome">
                             </div>
                             <div class="mb-auto col-lg-2 mx-auto">
