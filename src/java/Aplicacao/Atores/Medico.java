@@ -9,23 +9,10 @@ package Aplicacao.Atores;
  *
  * @author bruno
  */
-public class Medico {
+public class Medico extends Usuario {
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+    private static int perfil = 1;
+    
 
     public int getCrm() {
         return crm;
@@ -43,22 +30,6 @@ public class Medico {
         this.estadocrm = estadocrm;
     }
 
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
     public String getAutorizado() {
         return autorizado;
     }
@@ -67,19 +38,19 @@ public class Medico {
         this.autorizado = autorizado;
     }
 
-    public String getIdespecialidade() {
+    public int getIdespecialidade() {
         return idespecialidade;
     }
 
-    public void setIdespecialidade(String idespecialidade) {
+    public void setIdespecialidade(int idespecialidade) {
         this.idespecialidade = idespecialidade;
     }
-    private String id;
+
     private String nome;
     private int crm;
     private String estadocrm;
     private String cpf;
     private String senha;
     private String autorizado;
-    private String idespecialidade;
+    private int idespecialidade;
 }

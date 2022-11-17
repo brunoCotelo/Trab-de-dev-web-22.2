@@ -1,38 +1,7 @@
 package Model;
 
-
-/**
-import Aplicacao.Atores.Paciente;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-
-
- *
- * @author bruno
- 
-public class PacienteDAO {
-        public void create (Paciente pac){
-        Conexao conexao = new Conexao();
-        PreparedStatement stmt = null;
-        try{
-            stmt =  conexao.getConexao().prepareStatement("INSERT INTO paciente(nome, cpf, senha, autorizado, idtipopano) values(?, ?, ?, ?, ?)");
-            stmt.setString(1, pac.getNome());
-            stmt.setString(2, pac.getCpf());
-            stmt.setString(3, pac.getSenha());
-            stmt.setString(4, pac.getAutorizado());
-            stmt.setString(5, pac.getIdtipoplano());
-            stmt.executeUpdate();
-        }
-        catch(SQLException ex){
-            System.out.println("Falha em estabelecer conexao");
-        }
-                finally{
-            conexao.closeConexao();
-        }
-    }
-}*/
+ /* @author bruno
+*/
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -62,15 +31,16 @@ public class PacienteDAO {
         }
     }
 
-    public Paciente getPaciente(int id) throws Exception {
+    public Paciente getPacienteById(int id) throws Exception {
         Conexao conexao = new Conexao();
         try {
             Paciente paciente = new Paciente();
-            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM pacientes WHERE ID = ? ");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM paciente WHERE ID = ? ");
             sql.setInt(1, id);
             ResultSet resultado = sql.executeQuery();
             if (resultado != null) {
                 while (resultado.next()) {
+                    paciente.setId(resultado.getInt("id"));
                     paciente.setNome(resultado.getString("nome"));
                     paciente.setCpf(resultado.getString("cpf"));
                     paciente.setSenha(resultado.getString("senha"));
@@ -90,7 +60,7 @@ public class PacienteDAO {
     public void Alterar(Paciente paciente) throws Exception {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE pacientes SET nome = ?, cpf = ?, senha = ?, autorizado = ?, idtipoplano = ? WHERE ID = ? ");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE paciente SET nome = ?, cpf = ?, senha = ?, autorizado = ?, idtipoplano = ? WHERE ID = ? ");
             sql.setString(1, paciente.getNome());
             sql.setString(2, paciente.getCpf());
             sql.setString(3, paciente.getSenha());
@@ -108,7 +78,7 @@ public class PacienteDAO {
     public void Excluir(Paciente paciente) throws Exception {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM pacientes WHERE ID = ? ");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM paciente WHERE ID = ? ");
             sql.setInt(1, paciente.getId());
             sql.executeUpdate();
 
@@ -123,7 +93,7 @@ public class PacienteDAO {
         ArrayList<Paciente> meusPacientes = new ArrayList();
         Conexao conexao = new Conexao();
         try {
-            String selectSQL = "SELECT * FROM pacientes order by nome";
+            String selectSQL = "SELECT * FROM paciente order by nome";
             PreparedStatement preparedStatement;
             preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
             ResultSet resultado = preparedStatement.executeQuery();
@@ -151,7 +121,7 @@ public class PacienteDAO {
     public Paciente Logar(Paciente paciente) throws Exception {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM pacientes WHERE cpf=? and senha =? LIMIT 1");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM paciente WHERE cpf=? and senha =? LIMIT 1");
             sql.setString(1, paciente.getCpf());
             sql.setString(2, paciente.getSenha());
             ResultSet resultado = sql.executeQuery();

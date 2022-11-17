@@ -9,39 +9,10 @@ package Aplicacao.Atores;
  *
  * @author bruno
  */
-public class Paciente {
+public class Paciente extends Usuario {
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
+    private static int perfil = 0;
+    
 
     public String getAutorizado() {
         return autorizado;
@@ -60,27 +31,24 @@ public class Paciente {
     }
 
     public Paciente(int id, String nome, String cpf, String senha, String autorizado, int idtipoplano) {
-        this.id = id;
-        this.nome = nome;
-        this.cpf = cpf;
-        this.senha = senha;
+        super(id, nome, cpf, senha);
         this.autorizado = autorizado;
         this.idtipoplano = idtipoplano;
     }
 
     public Paciente(String cpf, String senha) {
-        this.cpf = cpf;
-        this.senha = senha;
+        super(cpf, senha);
     }
     
     public Paciente() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    private int id;
-    private String nome;
-    private String cpf;
-    private String senha;
+ 
     private String autorizado;
     private int idtipoplano;
+
+    public int getPerfil() {
+        return this.perfil;
+    }
 }

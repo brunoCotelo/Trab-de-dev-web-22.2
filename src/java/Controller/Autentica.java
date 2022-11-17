@@ -50,9 +50,11 @@ public class Autentica extends HttpServlet {
             request.setAttribute("msgError", "Usuário e/ou senha incorreto");
             rd = request.getRequestDispatcher("/../../login.jsp");
             rd.forward(request, response);
-
-
         } else {
+            //trocar o else por um case onde cada switch é um perfil
+            switch(perfil){
+                
+                case 0:
             Paciente usuarioObtido;
             Paciente usuario = new Paciente(cpf_user, senha_user);
             PacienteDAO usuarioDAO = new PacienteDAO();
@@ -66,7 +68,7 @@ public class Autentica extends HttpServlet {
             if (usuarioObtido.getId() != 0) {
                 HttpSession session = request.getSession();
                 session.setAttribute("usuario", usuarioObtido);
-                
+                session.setAttribute("perfil", usuarioObtido.getPerfil());
                 rd = request.getRequestDispatcher("/menuPaciente.jsp");
                 rd.forward(request, response);
                 
@@ -78,7 +80,37 @@ public class Autentica extends HttpServlet {
                 
              
             }
+            break;
+        
+            case 1:  //trocar para medico
+            Paciente usuarioObtido;
+            Paciente usuario = new Paciente(cpf_user, senha_user);
+            PacienteDAO usuarioDAO = new PacienteDAO();
+            try {
+               usuarioObtido = usuarioDAO.Logar(usuario);
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
+                throw new RuntimeException("Falha na query para Logar");
+            }
+
+            if (usuarioObtido.getId() != 0) {
+                HttpSession session = request.getSession();
+                session.setAttribute("usuario", usuarioObtido);
+                session.setAttribute("perfil", usuarioObtido.getPerfil());
+                rd = request.getRequestDispatcher("/menuPaciente.jsp");
+                rd.forward(request, response);
+                
+         
+            } else {
+                request.setAttribute("msgError", "Usuário e/ou senha incorreto");
+                rd = request.getRequestDispatcher("/login.jsp");
+                rd.forward(request, response);
+                
+             
+            }
+            break;
         }
+    }
     }
 
 }
