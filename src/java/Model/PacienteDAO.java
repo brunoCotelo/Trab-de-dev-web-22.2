@@ -121,14 +121,14 @@ public class PacienteDAO {
     public Paciente Logar(Paciente paciente) throws Exception {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM paciente WHERE cpf=? and senha =? LIMIT 1");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM paciente WHERE cpf = ? and senha = ? LIMIT 1");
             sql.setString(1, paciente.getCpf());
             sql.setString(2, paciente.getSenha());
             ResultSet resultado = sql.executeQuery();
             Paciente pacienteObtido = new Paciente();
             if (resultado != null) {
                 while (resultado.next()) {
-                    pacienteObtido.setId(Integer.parseInt(resultado.getString("id")));
+                    pacienteObtido.setId(resultado.getInt("id"));
                     pacienteObtido.setNome(resultado.getString("nome"));
                     pacienteObtido.setCpf(resultado.getString("cpf"));
                     pacienteObtido.setSenha(resultado.getString("senha"));

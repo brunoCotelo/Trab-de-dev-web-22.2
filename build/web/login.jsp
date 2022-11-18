@@ -53,9 +53,9 @@
                     <div class="form-group col-lg-3 mx-auto margin">
                         <label><b>Selecione a especialidade</b></label>
                         <select name="roles">
-                            <option value="paciente">Paciente</option>
-                            <option value="medico">Médico</option>
-                            <option value="administrador">Administrador</option>
+                            <option value="0">Paciente</option>
+                            <option value="1">Médico</option>
+                            <option value="2">Administrador</option>
                         </select><br><br>
                     </div>
                     <div class="container-fluid">

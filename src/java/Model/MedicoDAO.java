@@ -128,7 +128,7 @@ public class MedicoDAO {
     public Medico Logar(Medico medico) throws Exception {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM medico WHERE cpf=? and senha =? LIMIT 1");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM medico WHERE cpf = ? and senha = ? LIMIT 1");
             sql.setString(1, medico.getCpf());
             sql.setString(2, medico.getSenha());
             ResultSet resultado = sql.executeQuery();

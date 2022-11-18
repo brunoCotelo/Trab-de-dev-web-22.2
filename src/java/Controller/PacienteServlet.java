@@ -65,7 +65,6 @@ public class PacienteServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        System.out.print("Entrou");
         String nome_user = request.getParameter("nome");
         String cpf_user = request.getParameter("cpf");
         String senha_user = request.getParameter("senha");
