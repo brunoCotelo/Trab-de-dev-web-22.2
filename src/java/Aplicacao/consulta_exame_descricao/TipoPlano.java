@@ -9,7 +9,23 @@ package Aplicacao.consulta_exame_descricao;
  *
  * @author bruno
  */
-public class Descricao {
+public class TipoPlano {
+
+    public TipoPlano(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public TipoPlano() {
+     
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getDescricao() {
         return descricao;
@@ -19,14 +35,7 @@ public class Descricao {
         this.descricao = descricao;
     }
     
-    private String descricao;
     private int id;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+    private String descricao;
+   
 }

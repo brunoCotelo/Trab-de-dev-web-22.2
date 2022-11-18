@@ -11,32 +11,32 @@ package Aplicacao.consulta_exame_descricao;
  */
 public class Exame {
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getIdtipoexame() {
+    public int getIdtipoexame() {
         return idtipoexame;
     }
 
-    public void setIdtipoexame(String idtipoexame) {
+    public void setIdtipoexame(int idtipoexame) {
         this.idtipoexame = idtipoexame;
     }
 
-    public String getIdconsulta() {
+    public int getIdconsulta() {
         return idconsulta;
     }
 
-    public void setIdconsulta(String idconsulta) {
+    public void setIdconsulta(int idconsulta) {
         this.idconsulta = idconsulta;
     }
     
-    private String id;
-    private String idtipoexame;
-    private String idconsulta;
+    private int id;
+    private int idtipoexame;
+    private int idconsulta;
     
 }

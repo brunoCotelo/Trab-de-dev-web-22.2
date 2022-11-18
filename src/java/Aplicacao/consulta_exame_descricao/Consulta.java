@@ -13,11 +13,11 @@ import java.sql.Date;
  */
 public class Consulta {
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -45,27 +45,27 @@ public class Consulta {
         this.realizada = realizada;
     }
 
-    public String getIdmedico() {
+    public int getIdmedico() {
         return idmedico;
     }
 
-    public void setIdmedico(String idmedico) {
+    public void setIdmedico(int idmedico) {
         this.idmedico = idmedico;
     }
 
-    public String getIdpaciente() {
+    public int getIdpaciente() {
         return idpaciente;
     }
 
-    public void setIdpaciente(String idpaciente) {
+    public void setIdpaciente(int idpaciente) {
         this.idpaciente = idpaciente;
     }
     
-    private String id;
+    private int id;
     private Date data;
     private String descricao;
     private String realizada;
-    private String idmedico;
-    private String idpaciente;
+    private int idmedico;
+    private int idpaciente;
     
 }

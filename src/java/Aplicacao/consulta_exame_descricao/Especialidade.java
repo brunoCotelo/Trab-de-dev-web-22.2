@@ -9,18 +9,15 @@ package Aplicacao.consulta_exame_descricao;
  *
  * @author bruno
  */
-public class Descricao {
+public class Especialidade {
 
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
+    public Especialidade(String descricao) {
         this.descricao = descricao;
     }
-    
-    private String descricao;
-    private int id;
+
+    public Especialidade() {
+        
+    }
 
     public int getId() {
         return id;
@@ -29,4 +26,16 @@ public class Descricao {
     public void setId(int id) {
         this.id = id;
     }
-}
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String especialidade) {
+        this.descricao = especialidade;
+    }
+    
+    private int id;
+    private String descricao;
+    
+}   
