@@ -22,7 +22,7 @@
                     <a class="nav-link" href="./cadastroPaciente.jsp">Cadastro Paciente</a> 
                 </div>
                 <div>
-                    <a class="nav-link" href="./listaDeEspecialidades.jsp">Especialidades</a>  
+                    <a class="nav-link" href="./especialidadesEPlanos.jsp">Especialidades e planos</a>  
                 </div>
             </nav>
         </header>

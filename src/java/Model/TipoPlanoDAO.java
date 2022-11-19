@@ -80,7 +80,7 @@ public class TipoPlanoDAO {
         ArrayList<TipoPlano> minhasTipoPlanos = new ArrayList();
         Conexao conexao = new Conexao();
         try {
-            String selectSQL = "SELECT * FROM tipoplano order by nome";
+            String selectSQL = "SELECT * FROM tipoplano order by id";
             PreparedStatement preparedStatement;
             preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
             ResultSet resultado = preparedStatement.executeQuery();

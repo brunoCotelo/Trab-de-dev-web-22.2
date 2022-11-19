@@ -1,3 +1,6 @@
+<%@page import="Model.TipoPlanoDAO"%>
+<%@page import="Aplicacao.consulta_exame_descricao.TipoPlano"%>
+<%@page import="Model.EspecialidadeDAO"%>
 <%@page import="Aplicacao.consulta_exame_descricao.Especialidade"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -29,27 +32,24 @@
             </div>
         </nav>
     </header>
-                   <div class="table-responsive">
+    <div class="container-sm margin"> 
+                <div class="table-responsive">
                     <table class="table table-hover">
-                        <thead>
+                        <thead class="thead-dark">
                             <tr>
-                                <th scope="col">Especialidade</th>
+                                <th scope="col">Especialidades</th>
 
                             </tr>
                         </thead>
                         <tbody>
+                            
                             <%
-                                ArrayList<Comentario> listaComentarios = (ArrayList<Comentario>) request.getAttribute("listaComentarios");
+                                EspecialidadeDAO especialidadeDAO = new EspecialidadeDAO();
+                                ArrayList<Especialidade> listaEspecialidades = especialidadeDAO.ListaDeEspecialidade();
 
-                                for (Comentario comentario : listaComentarios) {
+                                for (Especialidade especialidade : listaEspecialidades) {
                                     out.println("<tr>");
-                                    out.println("<th>" + comentario.getId() + "</th>");
-                                    out.println("<td>" + comentario.getComentario()+ "</td>");
-                                    out.println("<td>" + comentario.getData()+ "</td>");
-                                    out.println("<td>" + comentario.getNomeususario()+ "</td>");
-                                    out.println("<td>" + comentario.getNomeCategoria()+ "</td>");%>
-                        <td><a href="ComentarioController?acao=Alterar&id=<%=comentario.getId()%>" class="btn btn-warning">Alterar</a>
-                            <a href="ComentarioController?acao=Excluir&id=<%=comentario.getId()%>" class="btn btn-danger">Excluir</a></td>
+                                    out.println("<th>" + especialidade.getDescricao() + "</th>");%>
                             <%   out.println("</tr>");
                                 }
                             %>
@@ -57,5 +57,32 @@
                         </tbody>
                     </table>
                 </div> 
+                            </div>  
+                <div class="container-sm margin">
+                            <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Tipos de plano</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <%
+                                TipoPlanoDAO tipoPlanoDAO = new TipoPlanoDAO();
+                                ArrayList<TipoPlano> listaTipoPlanos = tipoPlanoDAO.ListaDeTipoPlano();
+
+                                for (TipoPlano tipoPlano : listaTipoPlanos) {
+                                    out.println("<tr>");
+                                    out.println("<th>" + tipoPlano.getDescricao() + "</th>");%>
+                            <%   out.println("</tr>");
+                                }
+                            %>
+
+                        </tbody>
+                    </table>
+                </div> 
+                </div>
 </body>
 </html>

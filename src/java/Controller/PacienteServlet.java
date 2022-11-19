@@ -103,9 +103,7 @@ public class PacienteServlet extends HttpServlet {
             try {
                 switch (acao) {
                     case "cadastrar":
-                        System.out.print("case cadastro");
                         pacienteDAO.Inserir(paciente);
-                        System.out.print("case cadastro2");
                         request.setAttribute("msgOperacaoRealizada", "Inclusão realizada com sucesso");
                         break;
 //                    case "Alterar":
@@ -120,7 +118,6 @@ public class PacienteServlet extends HttpServlet {
 
                 ArrayList<Aplicacao.Atores.Paciente> listaPacientes = pacienteDAO.ListaDePacientes();
                 request.setAttribute("listaPacientes", listaPacientes);
-                System.out.print("saiu do case");
                 rd = request.getRequestDispatcher("/login.jsp");
                 rd.forward(request, response);
                 
