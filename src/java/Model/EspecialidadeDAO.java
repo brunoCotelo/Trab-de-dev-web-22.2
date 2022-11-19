@@ -77,28 +77,21 @@ public class EspecialidadeDAO {
     }
 
     public ArrayList<Especialidade> ListaDeEspecialidade() {
-        System.out.println("Chamou a lista");
         ArrayList<Especialidade> minhasEspecialidades = new ArrayList();
-        System.out.println("Criou a lista");
         Conexao conexao = new Conexao();
         try {
-            System.out.println("Entrou no try");
             String selectSQL = "SELECT * FROM especialidade order by id";
             PreparedStatement preparedStatement;
             preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
             ResultSet resultado = preparedStatement.executeQuery();
             if (resultado != null) {
-                System.out.println("entrou no if do try");
                 while (resultado.next()) {
-                    System.out.println("entrou no while");
                     Especialidade especialidade = new Especialidade(
                         resultado.getString("descricao"));
                     minhasEspecialidades.add(especialidade);
                 }
-                System.out.println("saiu do while");
             }
         } catch (SQLException e) {
-            System.out.println("Caiu no catch");
             throw new RuntimeException("Query de select (ListaDePacientes) incorreta");
         } finally {
             conexao.closeConexao();

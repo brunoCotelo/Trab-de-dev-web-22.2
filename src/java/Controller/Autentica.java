@@ -48,7 +48,6 @@ public class Autentica extends HttpServlet {
         String cpf_user = request.getParameter("cpf");
         String senha_user = request.getParameter("senha");
         String perfil = request.getParameter("roles");
-        System.out.println(perfil);
         if (cpf_user.isEmpty() || senha_user.isEmpty()) {
             // dados não foram preenchidos retorna ao formulário
             request.setAttribute("msgError", "Usuário e/ou senha incorreto");
@@ -87,21 +86,17 @@ public class Autentica extends HttpServlet {
             break;
         
             case "1":  //trocar para medico
-            System.out.println("entrou no case");
             Medico usuarioObtido1 = new Medico();
             Medico usuario1 = new Medico(cpf_user, senha_user);
             MedicoDAO usuarioDAO1 = new MedicoDAO();
             try {
-               System.out.println("entrou no try");
                 usuarioObtido1 = usuarioDAO1.Logar(usuario1);
             } catch (Exception ex) {
-                System.out.println("entrou no catch");
                 System.out.println(ex.getMessage());
                 throw new RuntimeException("Falha na query para Logar");
             }
 
             if (usuarioObtido1.getId() != 0) {
-                System.out.println("entrou no if");
                 HttpSession session = request.getSession();
                 session.setAttribute("usuario", usuarioObtido1);
                 session.setAttribute("perfil", usuarioObtido1.getPerfil());

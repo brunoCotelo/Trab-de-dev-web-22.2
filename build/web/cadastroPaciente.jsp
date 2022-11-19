@@ -46,10 +46,6 @@
                                 <label for="senha" class="form-label"><b>Senha</b></label>
                                 <input name="senha" type="password" class="form-control" id="senha">
                             </div>
-                            <!--<div class="mb-auto col-lg-1 mx-auto">
-                                <label for="autorizado" class="form-label"><b>Autorizado</b></label>
-                                <input name="autorizado" class="form-control" id="autorizado">
-                            </div> -->
                             <div class="form-group col-lg-3 mx-auto margin">
                                 <label for="autorizado"><b>Autorizado</b></label>
                                 <select name="autorizado">

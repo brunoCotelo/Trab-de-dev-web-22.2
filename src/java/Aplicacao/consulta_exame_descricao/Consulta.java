@@ -5,13 +5,23 @@
  */
 package Aplicacao.consulta_exame_descricao;
 
-import java.sql.Date;
-
 /**
  *
  * @author bruno
  */
 public class Consulta {
+
+    public Consulta(String data, String descricao, String realizada, int idmedico, int idpaciente) {
+        this.data = data;
+        this.descricao = descricao;
+        this.realizada = realizada;
+        this.idmedico = idmedico;
+        this.idpaciente = idpaciente;
+    }
+
+    public Consulta() {
+        
+    }
 
     public int getId() {
         return id;
@@ -21,11 +31,11 @@ public class Consulta {
         this.id = id;
     }
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
     }
 
@@ -62,7 +72,7 @@ public class Consulta {
     }
     
     private int id;
-    private Date data;
+    private String data;
     private String descricao;
     private String realizada;
     private int idmedico;
