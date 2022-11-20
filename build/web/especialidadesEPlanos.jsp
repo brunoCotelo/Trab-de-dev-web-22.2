@@ -63,8 +63,7 @@
             </div> 
         </div>  
         <div class="container-sm margin">
-            <div class="table-responsive">
-                <table class="table">
+                <table class="table table-bordereds">
                     <thead>
                         <tr>
                             <th scope="col">Tipos de plano</th>

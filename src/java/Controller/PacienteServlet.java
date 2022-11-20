@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import Model.PacienteDAO;
 import Aplicacao.Atores.Paciente;
+import Aplicacao.Atores.Usuario;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpSession;
 
 
 @WebServlet(name = "PacienteServlet", urlPatterns = {"/PacienteServlet"})
@@ -17,50 +19,52 @@ public class PacienteServlet extends HttpServlet {
 
     
     
-//    @Override
-//    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-//            throws ServletException, IOException {
-//
-//        String acao = (String) request.getParameter("acao");
-//
-//        Paciente paciente = new Paciente();
-//        PacienteDAO pacienteDAO = new PacienteDAO();
-//        RequestDispatcher rd;
-//        switch (acao) {
-//            case "Listar":
-//                try {
-//                    ArrayList<Aplicacao.Atores.Paciente> listaPacientes = pacienteDAO.ListaDePacientes();
-//                    request.setAttribute("msgOperacaoRealizada", "");
-//                    request.setAttribute("listaPacientes", listaPacientes);
-//                    rd = request.getRequestDispatcher("/view/paciente/listaPacientes.jsp");
-//                    rd.forward(request, response);
-//
-//                } catch (IOException | ServletException ex) {
-//                    System.out.println(ex.getMessage());
-//                    throw new RuntimeException("Falha na query listar pacientes (Paciente) ");
-//                }
-//                break;
-//            case "Alterar":
-//            case "Excluir":
-//                try {
-//                    int id = Integer.parseInt(request.getParameter("id"));
-//                    paciente = pacienteDAO.getPacienteById(id);
-//                    paciente.setId(id);
-//                } catch (Exception ex) {
-//                    System.out.println(ex.getMessage());
-//                    throw new RuntimeException("Falha em uma query para cadastro de paciente");
-//                }
-//                break;
-//
-//        }
-//        request.setAttribute("paciente", paciente);
-//        request.setAttribute("msgError", "");
-//        request.setAttribute("acao", acao);
-//
-//        rd = request.getRequestDispatcher("/view/paciente/formPaciente.jsp");
-//        rd.forward(request, response);
-//
-//    }
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        String acao = (String) request.getParameter("acao");
+
+        Paciente paciente = new Paciente();
+        PacienteDAO pacienteDAO = new PacienteDAO();
+        RequestDispatcher rd;
+        switch (acao) {
+            case "Listar":
+                try {
+//                    HttpSession session = request.getSession();
+//                    Usuario usuario = new Usuario();
+                    ArrayList<Aplicacao.Atores.Paciente> listaPacientes = pacienteDAO.ListaDePacientes();
+                    request.setAttribute("msgOperacaoRealizada", "");
+                    request.setAttribute("listaPacientes", listaPacientes);
+                    rd = request.getRequestDispatcher("/menuPaciente.jsp");
+                    rd.forward(request, response);
+
+                } catch (IOException | ServletException ex) {
+                    System.out.println(ex.getMessage());
+                    throw new RuntimeException("Falha na query listar pacientes (Paciente) ");
+                }
+                break;
+            case "Alterar":
+            case "Excluir":
+                try {
+                    int id = Integer.parseInt(request.getParameter("id"));
+                    paciente = pacienteDAO.getPacienteById(id);
+                    paciente.setId(id);
+                } catch (Exception ex) {
+                    System.out.println(ex.getMessage());
+                    throw new RuntimeException("Falha em uma query para cadastro de paciente");
+                }
+                break;
+
+        }
+        request.setAttribute("paciente", paciente);
+        request.setAttribute("msgError", "");
+        request.setAttribute("acao", acao);
+
+        rd = request.getRequestDispatcher("/menuPaciente.jsp");
+        rd.forward(request, response);
+
+    }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

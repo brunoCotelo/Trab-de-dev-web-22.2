@@ -25,22 +25,6 @@ public class ConsultaDAO {
             sql.executeUpdate();
             sql.close();
 
-//            Date data = new Date();
-//		System.out.println("Data Agora: "+data);
-            // sql.setString(1, "2022-09-12 11:00:19.0");
-//            sql.setString(1, "mamae");
-//            sql.setString(2, "S");
-//            sql.setInt(3, 123);
-//            sql.setInt(4, 132);
-//            sql.executeUpdate();
-            //           PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO paciente(nome, cpf, senha, autorizado, idtipoplano)"
-//                    + " VALUES (?, ?, ?, ?, ?)");
-//            sql.setString(1, "aa");
-//            sql.setString(2, "12321");
-//            sql.setString(3, "Sasease");
-// /           sql.setString(4, "S");
-//            sql.setInt(5, 1);
-//            sql.executeUpdate();
         } catch (SQLException e) {
             System.out.println("catch DAO");
             throw new RuntimeException();
@@ -93,17 +77,17 @@ public class ConsultaDAO {
         }
     }
 
-    public void Excluir(Consulta consulta) throws Exception {
-        Conexao conexao = new Conexao();
+    public void Excluir(int id) throws Exception {
+         Connection conexao = new Conexao().getConexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM consulta WHERE ID = ? ");
-            sql.setInt(1, consulta.getId());
+            PreparedStatement sql = conexao.prepareStatement("DELETE FROM consulta WHERE ID = ? ");
+            sql.setInt(1, id);
             sql.executeUpdate();
 
         } catch (SQLException e) {
             throw new RuntimeException("Query de delete (excluir) incorreta");
         } finally {
-            conexao.closeConexao();
+//            conexao.closeConexao();
         }
     }
 
@@ -133,5 +117,64 @@ public class ConsultaDAO {
         }
         return minhasConsultas;
     }
+    
+    public ArrayList<Consulta> ListaDeConsultaPaciente(int idpaciente) {
+        ArrayList<Consulta> consultas = new ArrayList();
+        Conexao conexao = new Conexao();
+        try {
+            String selectSQL = "SELECT * FROM consulta WHERE idpaciente=? order by data";
+            PreparedStatement sql;
+            sql = conexao.getConexao().prepareStatement(selectSQL);
+            sql.setInt(1, idpaciente);
+            ResultSet resultado = sql.executeQuery();
+            if (resultado != null) {
+                while (resultado.next()) {
+                    Consulta consulta = new Consulta(
+                            resultado.getInt("id"),
+                            resultado.getString("data"),
+                            resultado.getString("descricao"),
+                            resultado.getString("realizada"),
+                            resultado.getInt("idmedico"),
+                            resultado.getInt("idpaciente"));
+                    consultas.add(consulta);
+                }
+            } 
+        } catch (SQLException e) {
+            throw new RuntimeException("Falha ao consultar pacientes");
+        } finally {
+            conexao.closeConexao();
+        }
+        return consultas;
+    }
+    
+    public ArrayList<Consulta> ListaDeConsultaMedico(int idmedico) {
+        ArrayList<Consulta> consultas = new ArrayList();
+        Conexao conexao = new Conexao();
+        try {
+            String selectSQL = "SELECT * FROM consulta WHERE idmedico=? order by data";
+            PreparedStatement sql;
+            sql = conexao.getConexao().prepareStatement(selectSQL);
+            sql.setInt(1, idmedico);
+            ResultSet resultado = sql.executeQuery();
+            if (resultado != null) {
+                while (resultado.next()) {
+                    Consulta consulta = new Consulta(
+                            resultado.getInt("id"),
+                            resultado.getString("data"),
+                            resultado.getString("descricao"),
+                            resultado.getString("realizada"),
+                            resultado.getInt("idmedico"),
+                            resultado.getInt("idpaciente"));
+                    consultas.add(consulta);
+                }
+            } 
+        } catch (SQLException e) {
+            throw new RuntimeException("Falha ao consultar pacientes");
+        } finally {
+            conexao.closeConexao();
+        }
+        return consultas;
+    }
+    
 
 }

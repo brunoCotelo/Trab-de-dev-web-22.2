@@ -23,6 +23,15 @@ public class Consulta {
         
     }
 
+    public Consulta(int id, String data, String descricao, String realizada, int idmedico, int idpaciente) {
+        this.id = id;
+        this.data = data;
+        this.descricao = descricao;
+        this.realizada = realizada;
+        this.idmedico = idmedico;
+        this.idpaciente = idpaciente;
+    }
+
     public int getId() {
         return id;
     }

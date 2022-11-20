@@ -1,2 +1,0 @@
-controller.PacienteServlet
-controller.UsuarioController

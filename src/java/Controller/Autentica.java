@@ -2,6 +2,8 @@ package Controller;
 
 import Aplicacao.Atores.Medico;
 import Aplicacao.Atores.Paciente;
+import Aplicacao.consulta_exame_descricao.Consulta;
+import Model.ConsultaDAO;
 import Model.MedicoDAO;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
@@ -12,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import Model.PacienteDAO;
+import java.util.ArrayList;
 
 @WebServlet(name = "Autentica", urlPatterns = {"/Autentica"})
 public class Autentica extends HttpServlet {
@@ -71,6 +74,10 @@ public class Autentica extends HttpServlet {
                         HttpSession session = request.getSession();
                         session.setAttribute("usuario", usuarioObtido);
                         session.setAttribute("perfil", usuarioObtido.getPerfil());
+                        ConsultaDAO consultaDAO = new ConsultaDAO();
+                        ArrayList<Consulta> listaConsultas = consultaDAO.ListaDeConsultaPaciente(usuarioObtido.getId());
+                        request.setAttribute("msgOperacaoRealizada", "");
+                        request.setAttribute("listaConsultas", listaConsultas);
                         rd = request.getRequestDispatcher("/menuPaciente.jsp");
                         rd.forward(request, response);
 
@@ -97,6 +104,10 @@ public class Autentica extends HttpServlet {
                         HttpSession session = request.getSession();
                         session.setAttribute("usuario", usuarioObtido1);
                         session.setAttribute("perfil", usuarioObtido1.getPerfil());
+                        ConsultaDAO consultaDAO = new ConsultaDAO();
+                        ArrayList<Consulta> listaConsultas = consultaDAO.ListaDeConsultaMedico(usuarioObtido1.getId());
+                    request.setAttribute("msgOperacaoRealizada", "");
+                        request.setAttribute("listaConsultas", listaConsultas);
                         rd = request.getRequestDispatcher("/menuMedicoConsulta.jsp");
                         rd.forward(request, response);
 

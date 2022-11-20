@@ -99,7 +99,7 @@ public class MedicoDAO {
         ArrayList<Medico> meusMedicos = new ArrayList();
         Conexao conexao = new Conexao();
         try {
-            String selectSQL = "SELECT * FROM medico order by nome";
+            String selectSQL = "SELECT DISTINCT * FROM medico order by nome";
             PreparedStatement preparedStatement;
             preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
             ResultSet resultado = preparedStatement.executeQuery();
