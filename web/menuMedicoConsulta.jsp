@@ -23,6 +23,9 @@
                     <a class="nav-link" href="./menuMedicoConsulta.jsp">Menu</a>
                 </div>
                 <div>
+                    <a class="nav-link" href="./edicaoDeConsulta.jsp">Edição</a>
+                </div>
+                <div>
                     <a class="nav-link" href="./login.jsp">Logout</a>
                 </div>
             </nav>
@@ -60,8 +63,10 @@
                                     %>
                                     
                                      <td><a href="ConsultaServlet?acao=Excluir&id=<%=consulta.getId()%>" type="submit" name="btEnviar" class="btn btn-danger">Excluir</button></td>
-                                <td><a href="ConsultaServlet?acao=Alterar&id=<%=consulta.getId()%>" type="submit" name="btEnviar" class="btn btn-warning">Alterar</a></td>
+                                <td><a href="./edicaoDeConsulta.jsp" type="submit" name="btEnviar" class="btn btn-warning"><input hidden name ="acao" id="acao" value="Alterar"><input hidden name ="id" id="id" value="<%=consulta.getId()%>">Alterar</a></td>
                                     
+                                
+                                
                                     <%   out.println("</tr>");
                                         }
                                     %>

@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import Model.PacienteDAO;
 import Aplicacao.Atores.Paciente;
-import Aplicacao.Atores.Usuario;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
 

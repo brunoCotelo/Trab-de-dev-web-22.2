@@ -22,6 +22,9 @@
                 <div>
                     <a class="nav-link" href="./login.jsp">Logout</a>
                 </div>
+                <div>
+                    <a class="nav-link" href="./edicaoDeConsulta.jsp">Edição</a>
+                </div>
             </nav>
         </header>
 
@@ -32,25 +35,16 @@
                     <div class="container">
                         <input hidden name ="acao" id="acao" value="cadastrar">
                         <div class="row">
-                            <div class="container-fluid col-sm-2 mx-auto margin">
-                                <label for="data" class="form-label"><b>Data da consulta</b></label>
-                                <input class="form-control" name="data" id="data" placeholder="dd/mm/aaaa">
-                            </div>
                             <div class="container-fluid col-md-8 mx-auto margin">
                                 <label for="descricao" class="form-label"><b>Descrição da consulta</b></label>
                                 <input class="form-control" name="descricao" id="descricao">
                             </div>
-                            <div class="container-fluid col-lg-2 mx-auto margin">
-                                <label for="realizada" class="form-label"><b>Consulta realizada?</b></label>
-                                <input class="form-control" name="realizada" id="realizada">
-                            </div>
-                            <div class="container-fluid col-lg-2 mx-auto margin">
-                                <label for="idmedico" class="form-label"><b>ID do médico</b></label>
-                                <input class="form-control" name="idmedico" id="idmedico">
-                            </div>
-                            <div class="container-fluid col-lg-2 mx-auto margin">
-                                <label for="idpaciente" class="form-label"><b>ID do paciente</b></label>
-                                <input class="form-control" name="idpaciente" id="idpaciente">
+                            <div class="form-group col-lg-3 mx-auto margin">
+                                <label><b>Consulta realizada?</b></label>
+                                <select name="realizada">
+                                    <option value="S">Sim</option>
+                                    <option value="N">Não</option>
+                                </select>
                             </div>
                             <div class="container-fluid">
                                 <div class="mx-auto margin" style="width: 200px;">

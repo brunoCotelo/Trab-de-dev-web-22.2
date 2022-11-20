@@ -13,19 +13,16 @@ import Aplicacao.consulta_exame_descricao.Consulta;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
 
-
 @WebServlet(name = "ConsultaServlet", urlPatterns = {"/ConsultaServlet"})
 public class ConsultaServlet extends HttpServlet {
 
-    
-    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         String acao = (String) request.getParameter("acao");
 
-Consulta consulta = new Consulta();
+        Consulta consulta = new Consulta();
         ConsultaDAO consultaDAO = new ConsultaDAO();
         RequestDispatcher rd;
         switch (acao) {
@@ -47,15 +44,15 @@ Consulta consulta = new Consulta();
                 break;
             //case "Alterar":
             case "Excluir":
-                
+
                 try {
-                    //int id = Integer.parseInt(request.getParameter("id"));
-                    //consultaDAO.Excluir(id);
-                    //request.setAttribute("msgOperacaoRealizada", "Exclusão realizada com sucesso");
-                    
+                    int id = Integer.parseInt(request.getParameter("id"));
+                    consultaDAO.Excluir(id);
+                    request.setAttribute("msgOperacaoRealizada", "Exclusão realizada com sucesso");
+
                 } catch (Exception ex) {
                     System.out.println(ex.getMessage());
-                    throw new RuntimeException("Falha em uma query para cadastro de consulta");
+                    throw new RuntimeException("Falha em uma query para exclusão de consulta");
                 }
                 break;
 
@@ -64,45 +61,45 @@ Consulta consulta = new Consulta();
         request.setAttribute("msgError", "");
         request.setAttribute("acao", acao);
 
-        rd = request.getRequestDispatcher("/menuPaciente.jsp");
+        rd = request.getRequestDispatcher("/login.jsp");
         //response.sendRedirect("/BrunoCotelo/menuPaciente.jsp");
         rd.forward(request, response);
 
-
-
     }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
+        HttpSession session = request.getSession();
+
         String data_consulta = request.getParameter("data");
         String descricao_consulta = request.getParameter("descricao");
         String realizada_consulta = request.getParameter("realizada");
         int idmedico_consulta = Integer.parseInt(request.getParameter("idmedico"));
-        HttpSession session = request.getSession();
+        //HttpSession session = request.getSession();
         Paciente paciente = (Paciente) session.getAttribute("usuario");
         int idpaciente_consulta = paciente.getId();
         String acao = request.getParameter("acao");
-        String idConsulta = request.getParameter("id");
-        
         RequestDispatcher rd;
-        
+
 //        if(acao == "cadastrar"){
 //        
 //        }
-
-        if (data_consulta.isEmpty() || idmedico_consulta == 0 || idpaciente_consulta == 0){
+        if (data_consulta.isEmpty() || idmedico_consulta == 0 || idpaciente_consulta == 0) {
             Consulta consulta = new Consulta();
             switch (acao) {
                 case "cadastrar":
                     request.setAttribute("acao", "cadastrar");
                     break;
-                
-//                 case "Alterar": case "Excluir": try { ConsultaDAO consultaDAO = new ConsultaDAO(); consulta = consultaDAO.getConsulta(id);
+
+//                 case "Alterar":
+//                 
+//                 case "Excluir": try { ConsultaDAO consultaDAO = new ConsultaDAO(); consulta = consultaDAO.getConsulta(id);
 //                 } catch (Exception ex) { System.out.println(ex.getMessage());
 //                 throw new RuntimeException("Falha em uma query para cadastro de consulta"); }
 //                    break;
-            }
+                }
 
             request.setAttribute("msgError", "É necessário preencher todos os campos");
             request.setAttribute("consulta", consulta);
@@ -110,8 +107,7 @@ Consulta consulta = new Consulta();
             rd = request.getRequestDispatcher("/menuPaciente.jsp");
             rd.forward(request, response);
 
-        } 
-        else {
+        } else {
             Consulta consulta = new Consulta(data_consulta, descricao_consulta, realizada_consulta, idmedico_consulta, idpaciente_consulta);
             ConsultaDAO consultaDAO = new ConsultaDAO();
             try {
@@ -126,16 +122,17 @@ Consulta consulta = new Consulta();
                         break;
 
                 }
-                
+
                 ArrayList<Aplicacao.consulta_exame_descricao.Consulta> listaConsultas = consultaDAO.ListaDeConsultaPaciente(idpaciente_consulta);
                 request.setAttribute("listaConsultas", listaConsultas);
                 rd = request.getRequestDispatcher("/menuPaciente.jsp");
                 rd.forward(request, response);
-                
+
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
                 throw new RuntimeException("Falha em uma query para cadastro de consulta");
             }
         }
     }
+
 }
