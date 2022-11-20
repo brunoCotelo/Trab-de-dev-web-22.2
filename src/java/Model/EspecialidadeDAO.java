@@ -87,7 +87,8 @@ public class EspecialidadeDAO {
             if (resultado != null) {
                 while (resultado.next()) {
                     Especialidade especialidade = new Especialidade(
-                        resultado.getString("descricao"));
+                            resultado.getInt("id"),
+                            resultado.getString("descricao"));
                     minhasEspecialidades.add(especialidade);
                 }
             }

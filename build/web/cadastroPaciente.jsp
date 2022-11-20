@@ -1,3 +1,6 @@
+<%@page import="Aplicacao.consulta_exame_descricao.TipoPlano"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Model.TipoPlanoDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
     <html lang="pt-br">
@@ -31,8 +34,8 @@
             <h2 style="text-align: center;" class="margin"> Cadastro de um paciente</h2>
             <div class="container-fluid formCadstroPaciente">
                 <form action="PacienteServlet" method="POST">
+                    
                     <div class="container">
-                        <input hidden name ="acao" id="acao" value="cadastrar">
                         <div class="row">
                             <div class="mb-auto col-lg-4 mx-auto">
                                 <label for="nome" class="form-label"><b>Nome</b></label>
@@ -47,16 +50,24 @@
                                 <input name="senha" type="password" class="form-control" id="senha">
                             </div>
                             <div class="form-group col-lg-3 mx-auto margin">
-                                <label for="autorizado"><b>Autorizado</b></label>
-                                <select name="autorizado">
-                                    <option value="S">Sim</option>
-                                    <option value="N">Não</option>
+                                <label for="idtipoplano"><b>Convênios</b></label>
+                                <select name="idtipoplano" id="idtipoplano">
+                                    <%
+                            TipoPlanoDAO tipoPlanoDAO = new TipoPlanoDAO();
+                            ArrayList<TipoPlano> listaTipoPlanos = tipoPlanoDAO.ListaDeTipoPlano();
+
+                            for (TipoPlano tipoPlano : listaTipoPlanos) {
+                                out.println("<option value=" +  tipoPlano.getId() + ">" + tipoPlano.getDescricao() +"</option>");%>
+                        <%   
+                            }
+                        %> 
                                 </select><br><br>
                             </div>
+                          
                         </div>
                         <div class="row">
                             <div class="mx-auto margin" style="width: 200px;">
-                                <button type="submit" name="btEnviar" class="btn btn-primary">Cadastrar</button>
+                                <button type="submit" name="btEnviar" class="btn btn-primary"><input hidden name ="acao" id="acao" value="cadastrar">Cadastrar</button>
                             </div>
                         </div>
                 </form>

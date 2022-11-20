@@ -33,9 +33,8 @@
             </nav>
         </header>
         <div class="container-sm margin"> 
-            <div class="table-responsive">
-                <table class="table table-hover">
-                    <thead class="thead-dark">
+                <table class="table table-bordered">
+                    <thead>
                         <tr>
                             <th scope="col">Especialidades</th>
 
@@ -46,10 +45,15 @@
                         <%
                             EspecialidadeDAO especialidadeDAO = new EspecialidadeDAO();
                             ArrayList<Especialidade> listaEspecialidades = especialidadeDAO.ListaDeEspecialidade();
+                            Especialidade primeiraEspecialidade = listaEspecialidades.get(0);
 
                             for (Especialidade especialidade : listaEspecialidades) {
+                                String primeiraLinha = "";
+                                        if(primeiraEspecialidade == especialidade) {
+                                            primeiraLinha = " scope=\"" + "row\"" + "\"";
+                                           };
                                 out.println("<tr>");
-                                out.println("<th>" + especialidade.getDescricao() + "</th>");%>
+                                out.println("<th" + primeiraLinha +">" + especialidade.getDescricao() + "</th>");%>
                         <%   out.println("</tr>");
                             }
                         %>
@@ -60,16 +64,14 @@
         </div>  
         <div class="container-sm margin">
             <div class="table-responsive">
-                <table class="table table-hover">
+                <table class="table">
                     <thead>
                         <tr>
                             <th scope="col">Tipos de plano</th>
-
                         </tr>
                     </thead>
                     <tbody>
-
-                        <%
+                         <%
                             TipoPlanoDAO tipoPlanoDAO = new TipoPlanoDAO();
                             ArrayList<TipoPlano> listaTipoPlanos = tipoPlanoDAO.ListaDeTipoPlano();
 
@@ -79,10 +81,9 @@
                         <%   out.println("</tr>");
                             }
                         %>
-
+                        
                     </tbody>
                 </table>
-            </div> 
         </div>
     </body>
 </html>

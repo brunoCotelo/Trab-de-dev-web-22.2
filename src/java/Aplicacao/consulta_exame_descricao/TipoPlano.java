@@ -11,7 +11,8 @@ package Aplicacao.consulta_exame_descricao;
  */
 public class TipoPlano {
 
-    public TipoPlano(String descricao) {
+    public TipoPlano(int id, String descricao) {
+        this.id = id;
         this.descricao = descricao;
     }
 

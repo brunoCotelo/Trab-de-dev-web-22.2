@@ -68,12 +68,12 @@ public class PacienteServlet extends HttpServlet {
         String nome_user = request.getParameter("nome");
         String cpf_user = request.getParameter("cpf");
         String senha_user = request.getParameter("senha");
-        String autorizado_user = request.getParameter("autorizado");
+        int idtipoplano_user = Integer.parseInt(request.getParameter("idtipoplano"));
         String acao = request.getParameter("acao");
 
         RequestDispatcher rd;
 
-        if (nome_user.isEmpty() || cpf_user.isEmpty() || senha_user.isEmpty() || autorizado_user.isEmpty()) {
+        if (nome_user.isEmpty() || cpf_user.isEmpty() || senha_user.isEmpty() || idtipoplano_user == 0) {
             Paciente paciente = new Paciente();
             switch (acao) {
                 case "cadastrar":
@@ -97,7 +97,7 @@ public class PacienteServlet extends HttpServlet {
 
         } else {
 
-            Paciente paciente = new Paciente(nome_user, cpf_user, senha_user, autorizado_user);
+            Paciente paciente = new Paciente(nome_user, cpf_user, senha_user, "N", idtipoplano_user);
             //paciente.setId(id);
             PacienteDAO pacienteDAO = new PacienteDAO();
             try {

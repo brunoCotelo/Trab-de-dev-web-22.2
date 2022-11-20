@@ -87,6 +87,7 @@ public class TipoPlanoDAO {
             if (resultado != null) {
                 while (resultado.next()) {
                     TipoPlano tipoPlano = new TipoPlano(
+                        resultado.getInt("id"),
                         resultado.getString("descricao"));
                     minhasTipoPlanos.add(tipoPlano);
                 }

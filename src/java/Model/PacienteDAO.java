@@ -21,7 +21,7 @@ public class PacienteDAO {
             sql.setString(2, paciente.getCpf());
             sql.setString(3, paciente.getSenha());
             sql.setString(4, paciente.getAutorizado());
-            sql.setInt(5, 1);
+            sql.setInt(5, paciente.getIdtipoplano());
             sql.executeUpdate();
 
         } catch (SQLException e) {

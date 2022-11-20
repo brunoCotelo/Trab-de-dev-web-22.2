@@ -1,5 +1,6 @@
 package Controller;
 
+import Aplicacao.Atores.Paciente;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import Model.ConsultaDAO;
 import Aplicacao.consulta_exame_descricao.Consulta;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpSession;
 
 
 @WebServlet(name = "ConsultaServlet", urlPatterns = {"/ConsultaServlet"})
@@ -69,10 +71,16 @@ public class ConsultaServlet extends HttpServlet {
         String descricao_consulta = request.getParameter("descricao");
         String realizada_consulta = request.getParameter("realizada");
         int idmedico_consulta = Integer.parseInt(request.getParameter("idmedico"));
-        int idpaciente_consulta = Integer.parseInt(request.getParameter("idpaciente"));
+        HttpSession session = request.getSession();
+        Paciente paciente = (Paciente) session.getAttribute("usuario");
+        int idpaciente_consulta = paciente.getId();
         String acao = request.getParameter("acao");
         
         RequestDispatcher rd;
+        
+        if(acao == "cadastrar"){
+        
+        }
 
         if (data_consulta.isEmpty() || descricao_consulta.isEmpty() || realizada_consulta.isEmpty() || idmedico_consulta == 0 || idpaciente_consulta == 0){
             Consulta consulta = new Consulta();

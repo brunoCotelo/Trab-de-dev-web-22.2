@@ -1,41 +1,39 @@
 package Model;
 
- /* @author bruno
-*/
-
+/* @author bruno
+ */
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import Aplicacao.consulta_exame_descricao.Consulta;
+import java.sql.Connection;
 
 public class ConsultaDAO {
 
     public void Inserir(Consulta consulta) throws Exception {
-        Conexao conexao = new Conexao();
+        Connection conexao = new Conexao().getConexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO consulta(data, descricao, realizada, idmedico, idpaciente)"
-                         + " VALUES (?, ?, ?, ?, ?)");
-//                     
-//            sql.setString(1, consulta.getData());
-//            sql.setString(2, consulta.getDescricao());
-//            sql.setString(3, consulta.getRealizada());
-//            sql.setInt(4, consulta.getIdmedico());
-//            sql.setInt(5, consulta.getIdpaciente());
-//            sql.executeUpdate();
+            PreparedStatement sql = conexao.prepareStatement("INSERT INTO consulta(data, descricao, realizada, idmedico, idpaciente)"
+                    + " VALUES (?, ?, ?, ?, ?)");
+
+            sql.setString(1, consulta.getData());
+            sql.setString(2, consulta.getDescricao());
+            sql.setString(3, consulta.getRealizada());
+            sql.setInt(4, consulta.getIdmedico());
+            sql.setInt(5, consulta.getIdpaciente());
+            sql.executeUpdate();
+            sql.close();
 
 //            Date data = new Date();
 //		System.out.println("Data Agora: "+data);
-              
-
-            sql.setString(1, "2022-09-12 11:00:19.0");
-            sql.setString(2, "mamae");
-            sql.setString(3, "S");
-            sql.setInt(4, 123);
-            sql.setInt(5, 132);
-            sql.executeUpdate();
-
- //           PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO paciente(nome, cpf, senha, autorizado, idtipoplano)"
+            // sql.setString(1, "2022-09-12 11:00:19.0");
+//            sql.setString(1, "mamae");
+//            sql.setString(2, "S");
+//            sql.setInt(3, 123);
+//            sql.setInt(4, 132);
+//            sql.executeUpdate();
+            //           PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO paciente(nome, cpf, senha, autorizado, idtipoplano)"
 //                    + " VALUES (?, ?, ?, ?, ?)");
 //            sql.setString(1, "aa");
 //            sql.setString(2, "12321");
@@ -43,13 +41,11 @@ public class ConsultaDAO {
 // /           sql.setString(4, "S");
 //            sql.setInt(5, 1);
 //            sql.executeUpdate();
-
-
         } catch (SQLException e) {
             System.out.println("catch DAO");
             throw new RuntimeException();
         } finally {
-            conexao.closeConexao();
+//            Conexao.closeConexao();
         }
     }
 
@@ -122,11 +118,11 @@ public class ConsultaDAO {
             if (resultado != null) {
                 while (resultado.next()) {
                     Consulta consulta = new Consulta(
-                        resultado.getString("data"),
-                        resultado.getString("descricao"),
-                        resultado.getString("realizada"),
-                        resultado.getInt("idmedico"),
-                        resultado.getInt("idpaciente"));
+                            resultado.getString("data"),
+                            resultado.getString("descricao"),
+                            resultado.getString("realizada"),
+                            resultado.getInt("idmedico"),
+                            resultado.getInt("idpaciente"));
                     minhasConsultas.add(consulta);
                 }
             }

@@ -13,12 +13,15 @@ public class Paciente extends Usuario {
 
     private static int perfil = 0;
 
-    public Paciente(String nome, String cpf, String senha, String autorizado) {
+    public Paciente(String nome, String cpf, String senha, String autorizado, int idtipoplano) {
         super(nome, cpf, senha);
         this.autorizado = autorizado;
+        this.idtipoplano = idtipoplano;
     }
     
 
+    
+    
     public String getAutorizado() {
         return autorizado;
     }

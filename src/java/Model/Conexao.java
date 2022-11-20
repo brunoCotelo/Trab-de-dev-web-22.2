@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 public class Conexao {
     /* Banco de dados: `dbjava` */
-    private Connection conexao;
+    public Connection conexao;
 
     public Conexao() {
         try {
