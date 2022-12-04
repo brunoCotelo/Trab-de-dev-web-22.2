@@ -1,88 +1,141 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controller;
 
+import Aplicacao.Atores.Administrador;
+import Aplicacao.Atores.Medico;
+import Aplicacao.Atores.Paciente;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import Model.ConsultaDAO;
+import Aplicacao.consulta_exame_descricao.Consulta;
+import Model.MedicoDAO;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author bruno
- */
-@WebServlet(name = "Medico", urlPatterns = {"/Medico"})
+@WebServlet(name = "MedicoServlet", urlPatterns = {"/MedicoServlet"})
 public class MedicoServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Medico</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Medico at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+
+        String acao = (String) request.getParameter("acao");
+
+        Medico consulta = new Medico();
+        MedicoDAO medicoDAO = new MedicoDAO();
+        RequestDispatcher rd;
+        switch (acao) {
+            case "Listar":
+                try {
+                    HttpSession session = request.getSession();
+                    Administrador usuario = new Administrador();
+                    usuario = (Administrador) session.getAttribute("usuario");
+                    ArrayList<Aplicacao.Atores.Medico> listaMedicos = medicoDAO.ListaDeMedicos();
+                    request.setAttribute("msgOperacaoRealizada", "");
+                    request.setAttribute("listaMedicos", listaMedicos);
+                    rd = request.getRequestDispatcher("/cadastroMedico.jsp");
+                    rd.forward(request, response);
+
+                } catch (IOException | ServletException ex) {
+                    System.out.println(ex.getMessage());
+                    throw new RuntimeException("Falha na query listar consultas (Medico) ");
+                }
+                break;
+            //case "Alterar":
+            case "Excluir":
+
+                try {
+                    int id = Integer.parseInt(request.getParameter("id"));
+                    consultaDAO.Excluir(id);
+                    request.setAttribute("msgOperacaoRealizada", "Exclusão realizada com sucesso");
+
+                } catch (Exception ex) {
+                    System.out.println(ex.getMessage());
+                    throw new RuntimeException("Falha em uma query para exclusão de consulta");
+                }
+                break;
+
+        }
+        request.setAttribute("consulta", consulta);
+        request.setAttribute("msgError", "");
+        request.setAttribute("acao", acao);
+
+        rd = request.getRequestDispatcher("/login.jsp");
+        //response.sendRedirect("/BrunoCotelo/menuPaciente.jsp");
+        rd.forward(request, response);
+
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-    }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+        HttpSession session = request.getSession();
+
+        String data_consulta = request.getParameter("data");
+        String descricao_consulta = request.getParameter("descricao");
+        String realizada_consulta = request.getParameter("realizada");
+        int idmedico_consulta = 2;
+        //HttpSession session = request.getSession();
+        Paciente paciente = (Paciente) session.getAttribute("usuario");
+        int idpaciente_consulta = paciente.getId();
+        String acao = request.getParameter("acao");
+        RequestDispatcher rd;
+
+//        if(acao == "cadastrar"){
+//        
+//        }
+        if (data_consulta.isEmpty() || idmedico_consulta == 0 || idpaciente_consulta == 0) {
+            Medico consulta = new Medico();
+            switch (acao) {
+                case "cadastrar":
+                    request.setAttribute("acao", "cadastrar");
+                    break;
+
+//                 case "Alterar":
+//                 
+//                 case "Excluir": try { ConsultaDAO consultaDAO = new ConsultaDAO(); consulta = consultaDAO.getConsulta(id);
+//                 } catch (Exception ex) { System.out.println(ex.getMessage());
+//                 throw new RuntimeException("Falha em uma query para cadastro de consulta"); }
+//                    break;
+                }
+
+            request.setAttribute("msgError", "É necessário preencher todos os campos");
+            request.setAttribute("consulta", consulta);
+
+            rd = request.getRequestDispatcher("/menuPaciente.jsp");
+            rd.forward(request, response);
+
+        } else {
+            Medico consulta = new Medico(data_consulta, descricao_consulta, realizada_consulta, idmedico_consulta, idpaciente_consulta);
+            ConsultaDAO consultaDAO = new ConsultaDAO();
+            try {
+                switch (acao) {
+                    case "cadastrar":
+                        consultaDAO.Inserir(consulta);
+                        request.setAttribute("msgOperacaoRealizada", "Inclusão realizada com sucesso");
+                        break;
+                    case "Alterar":
+                        consultaDAO.Alterar(consulta);
+                        request.setAttribute("msgOperacaoRealizada", "Alteração realizada com sucesso");
+                        break;
+
+                }
+
+                ArrayList<Aplicacao.consulta_exame_descricao.Consulta> listaConsultas = consultaDAO.ListaDeConsultaPaciente(idpaciente_consulta);
+                request.setAttribute("listaConsultas", listaConsultas);
+                rd = request.getRequestDispatcher("/menuPaciente.jsp");
+                rd.forward(request, response);
+
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
+                throw new RuntimeException("Falha em uma query para cadastro de consulta");
+            }
+        }
+    }
 
 }
