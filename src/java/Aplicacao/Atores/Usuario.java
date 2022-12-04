@@ -15,6 +15,16 @@ public class Usuario {
     private String cpf;
     private String senha;
     private int id;
+    private TipoPerfil perfil;
+
+    public TipoPerfil getPerfil() {
+        return perfil;
+    }
+
+    public void setPerfil(TipoPerfil perfil) {
+        this.perfil = perfil;
+    }
+
 
     public int getId() {
         return id;
@@ -49,10 +59,11 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public Usuario(String nome, String cpf, String senha) {
+    public Usuario(String nome, String cpf, String senha, TipoPerfil perfil) {
         this.nome = nome;
         this.cpf = cpf;
         this.senha = senha;
+        this.perfil = perfil;
     }
 
     public Usuario() {

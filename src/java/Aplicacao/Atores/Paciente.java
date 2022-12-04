@@ -11,15 +11,12 @@ package Aplicacao.Atores;
  */
 public class Paciente extends Usuario {
 
-    private static int perfil = 0;
 
     public Paciente(String nome, String cpf, String senha, String autorizado, int idtipoplano) {
-        super(nome, cpf, senha);
+        super(nome, cpf, senha, TipoPerfil.PACIENTE);
         this.autorizado = autorizado;
         this.idtipoplano = idtipoplano;
     }
-    
-
     
     
     public String getAutorizado() {
@@ -47,7 +44,7 @@ public class Paciente extends Usuario {
     }
     
     public Paciente(int id, String nome, String cpf, String senha, String autorizado, int idtipoplano) {
-        super(nome, cpf, senha);
+        super(nome, cpf, senha, TipoPerfil.PACIENTE);
         this.id = id;
         this.autorizado = autorizado;
         this.idtipoplano = idtipoplano;
@@ -64,7 +61,4 @@ public class Paciente extends Usuario {
     private String autorizado;
     private int idtipoplano;
 
-    public int getPerfil() {
-        return this.perfil;
-    }
 }

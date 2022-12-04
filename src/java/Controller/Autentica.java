@@ -1,8 +1,11 @@
 package Controller;
 
+import Aplicacao.Atores.Administrador;
 import Aplicacao.Atores.Medico;
 import Aplicacao.Atores.Paciente;
+import Aplicacao.Atores.TipoPerfil;
 import Aplicacao.consulta_exame_descricao.Consulta;
+import Model.AdmDAO;
 import Model.ConsultaDAO;
 import Model.MedicoDAO;
 import java.io.IOException;
@@ -50,6 +53,7 @@ public class Autentica extends HttpServlet {
         String cpf_user = request.getParameter("cpf");
         String senha_user = request.getParameter("senha");
         String perfil = request.getParameter("roles");
+        TipoPerfil perfill = TipoPerfil.getPerfil(Integer.parseInt(perfil));
         if (cpf_user.isEmpty() || senha_user.isEmpty()) {
             // dados não foram preenchidos retorna ao formulário
             request.setAttribute("msgError", "Usuário e/ou senha incorreto");
@@ -57,9 +61,9 @@ public class Autentica extends HttpServlet {
             rd.forward(request, response);
         } else {
             //trocar o else por um case onde cada switch é um perfil
-            switch (perfil) {
+            switch (perfill) {
 
-                case "0":
+                case PACIENTE:
                     Paciente usuarioObtido = new Paciente();
                     Paciente usuario = new Paciente(cpf_user, senha_user);
                     PacienteDAO usuarioDAO = new PacienteDAO();
@@ -89,18 +93,17 @@ public class Autentica extends HttpServlet {
                     }
                     break;
 
-                case "1":  //trocar para medico
-                    Medico usuarioObtido1 = new Medico();
-                    Medico usuario1 = new Medico(cpf_user, senha_user);
+                case MEDICO:  //trocar para medico
+                    Medico usuarioObtido1;
                     MedicoDAO usuarioDAO1 = new MedicoDAO();
                     try {
-                        usuarioObtido1 = usuarioDAO1.Logar(usuario1);
+                        usuarioObtido1 = usuarioDAO1.Logar(cpf_user, senha_user);
                     } catch (Exception ex) {
                         System.out.println(ex.getMessage());
                         throw new RuntimeException("Falha na query para Logar");
                     }
 
-                    if (usuarioObtido1.getId() != 0) {
+                    if (usuarioObtido1 != null) {
                         HttpSession session = request.getSession();
                         session.setAttribute("usuario", usuarioObtido1);
                         session.setAttribute("perfil", usuarioObtido1.getPerfil());
@@ -109,6 +112,34 @@ public class Autentica extends HttpServlet {
                     request.setAttribute("msgOperacaoRealizada", "");
                         request.setAttribute("listaConsultas", listaConsultas);
                         rd = request.getRequestDispatcher("/menuMedicoConsulta.jsp");
+                        rd.forward(request, response);
+
+                    } else {
+                        request.setAttribute("msgError", "Usuário e/ou senha incorreto");
+                        rd = request.getRequestDispatcher("/login.jsp");
+                        rd.forward(request, response);
+
+                    }
+                    break;
+                case ADMINISTRADOR:   //trocar para adm
+                    Administrador usuarioObtido2;
+                    AdmDAO usuarioDAO2 = new AdmDAO();
+                    try {
+                        usuarioObtido2 = usuarioDAO2.Logar(cpf_user, senha_user);
+                    } catch (Exception ex) {
+                        System.out.println(ex.getMessage());
+                        throw new RuntimeException("Falha na query para Logar");
+                    }
+
+                    if (usuarioObtido2 != null) {
+                        HttpSession session = request.getSession();
+                        session.setAttribute("usuario", usuarioObtido2);
+                        session.setAttribute("perfil", usuarioObtido2.getPerfil());
+                        //ConsultaDAO consultaDAO = new ConsultaDAO();
+                        //ArrayList<Consulta> listaConsultas = consultaDAO.ListaDeConsultaAdm(usuarioObtido2.getId());
+                        request.setAttribute("msgOperacaoRealizada", "");
+                        //request.setAttribute("listaConsultas", listaConsultas);
+                        rd = request.getRequestDispatcher("/menuAdm.jsp");
                         rd.forward(request, response);
 
                     } else {

@@ -76,7 +76,7 @@ public class ConsultaServlet extends HttpServlet {
         String data_consulta = request.getParameter("data");
         String descricao_consulta = request.getParameter("descricao");
         String realizada_consulta = request.getParameter("realizada");
-        int idmedico_consulta = Integer.parseInt(request.getParameter("idmedico"));
+        int idmedico_consulta = 2;
         //HttpSession session = request.getSession();
         Paciente paciente = (Paciente) session.getAttribute("usuario");
         int idpaciente_consulta = paciente.getId();

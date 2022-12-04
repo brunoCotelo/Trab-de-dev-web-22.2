@@ -11,12 +11,8 @@ package Aplicacao.Atores;
  */
 public class Medico extends Usuario {
 
-
-
-    private static int perfil = 1;
-
     public Medico(String nome, int crm, String estadocrm, String cpf, String senha, String autorizado, int idespecialidade) {
-        super(nome, cpf, senha);
+        super(nome, cpf, senha, TipoPerfil.MEDICO);
         this.crm = crm;
         this.estadocrm = estadocrm;
         this.autorizado = autorizado;
@@ -28,7 +24,7 @@ public class Medico extends Usuario {
     }
 
     public Medico(int id, String nome, int crm, String estadocrm, String cpf, String senha, String autorizado, int idespecialidade) {
-        super(nome, cpf, senha);
+        super(nome, cpf, senha, TipoPerfil.MEDICO);
         this.id = id;
         this.crm = crm;
         this.estadocrm = estadocrm;
@@ -78,10 +74,6 @@ public class Medico extends Usuario {
 
     public void setIdespecialidade(int idespecialidade) {
         this.idespecialidade = idespecialidade;
-    }
-
-    public static int getPerfil() {
-        return perfil;
     }
     
     private int id;

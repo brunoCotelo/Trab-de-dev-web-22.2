@@ -9,20 +9,31 @@ package Aplicacao.Atores;
  *
  * @author bruno
  */
-public class Administrador {
-    
-    private static int perfil = 2;
-    
-    private String id;
+public class Administrador extends Usuario{
+   
+    private int id;
     private String nome;
     private String cpf;
     private String senha;
+
+    public Administrador(int id, String nome, String cpf, String senha) {
+        super(nome, cpf, senha, TipoPerfil.ADMINISTRADOR);
+        this.id = id;
+    }
+
+    public Administrador() {
+        
+    }
+
+    public Administrador(String cpf, String senha) {
+        super(cpf, senha);
+    }
     
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
     
@@ -49,4 +60,5 @@ public class Administrador {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
 }
