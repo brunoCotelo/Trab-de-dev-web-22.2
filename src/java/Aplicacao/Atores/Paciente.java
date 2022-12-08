@@ -35,17 +35,9 @@ public class Paciente extends Usuario {
         this.idtipoplano = idtipoplano;
     }
 
-     public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
     
     public Paciente(int id, String nome, String cpf, String senha, String autorizado, int idtipoplano) {
-        super(nome, cpf, senha, TipoPerfil.PACIENTE);
-        this.id = id;
+        super(id, nome, cpf, senha, TipoPerfil.PACIENTE);
         this.autorizado = autorizado;
         this.idtipoplano = idtipoplano;
     }
@@ -57,7 +49,6 @@ public class Paciente extends Usuario {
     public Paciente() {
     }
     
-    private int id;
     private String autorizado;
     private int idtipoplano;
 

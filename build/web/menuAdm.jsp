@@ -32,6 +32,9 @@
                 <a class="nav-link" href="./cadastroEspecialidade.jsp">Cadastrar Especialidade</a>
             </div>
             <div>
+                <a class="nav-link" href="./cadastroAdministrador.jsp">Cadastrar Administrador</a>
+            </div>
+            <div>
                 <a class="nav-link" href="./login.jsp">Logout</a>
             </div>
         </nav>

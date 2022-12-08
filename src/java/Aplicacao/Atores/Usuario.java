@@ -59,13 +59,21 @@ public class Usuario {
         this.senha = senha;
     }
 
+    public Usuario(int id, String nome, String cpf, String senha, TipoPerfil perfil) {
+        this.id = id;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.senha = senha;
+        this.perfil = perfil;
+    }
+    
     public Usuario(String nome, String cpf, String senha, TipoPerfil perfil) {
         this.nome = nome;
         this.cpf = cpf;
         this.senha = senha;
         this.perfil = perfil;
     }
-
+    
     public Usuario() {
     }
 
