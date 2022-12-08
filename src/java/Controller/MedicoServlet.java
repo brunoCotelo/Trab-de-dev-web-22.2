@@ -1,6 +1,5 @@
 package Controller;
 
-import Aplicacao.Atores.Administrador;
 import Aplicacao.Atores.Medico;
 import Aplicacao.Atores.Paciente;
 import java.io.IOException;
@@ -11,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import Model.ConsultaDAO;
-import Aplicacao.consulta_exame_descricao.Consulta;
 import Model.MedicoDAO;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
@@ -25,15 +23,15 @@ public class MedicoServlet extends HttpServlet {
 
         String acao = (String) request.getParameter("acao");
 
-        Medico consulta = new Medico();
+        Medico medico = new Medico();
         MedicoDAO medicoDAO = new MedicoDAO();
         RequestDispatcher rd;
         switch (acao) {
             case "Listar":
                 try {
                     HttpSession session = request.getSession();
-                    Administrador usuario = new Administrador();
-                    usuario = (Administrador) session.getAttribute("usuario");
+                    Medico usuario = new Medico();
+                    usuario = (Medico) session.getAttribute("usuario");
                     ArrayList<Aplicacao.Atores.Medico> listaMedicos = medicoDAO.ListaDeMedicos();
                     request.setAttribute("msgOperacaoRealizada", "");
                     request.setAttribute("listaMedicos", listaMedicos);
@@ -50,7 +48,7 @@ public class MedicoServlet extends HttpServlet {
 
                 try {
                     int id = Integer.parseInt(request.getParameter("id"));
-                    consultaDAO.Excluir(id);
+                    medicoDAO.Excluir(id);
                     request.setAttribute("msgOperacaoRealizada", "Exclusão realizada com sucesso");
 
                 } catch (Exception ex) {
@@ -60,7 +58,7 @@ public class MedicoServlet extends HttpServlet {
                 break;
 
         }
-        request.setAttribute("consulta", consulta);
+        request.setAttribute("medico", medico);
         request.setAttribute("msgError", "");
         request.setAttribute("acao", acao);
 
@@ -111,16 +109,16 @@ public class MedicoServlet extends HttpServlet {
             rd.forward(request, response);
 
         } else {
-            Medico consulta = new Medico(data_consulta, descricao_consulta, realizada_consulta, idmedico_consulta, idpaciente_consulta);
+           // Medico consulta = new Medico(data_consulta, descricao_consulta, realizada_consulta, idmedico_consulta, idpaciente_consulta);
             ConsultaDAO consultaDAO = new ConsultaDAO();
             try {
                 switch (acao) {
                     case "cadastrar":
-                        consultaDAO.Inserir(consulta);
+                       // consultaDAO.Inserir(consulta);
                         request.setAttribute("msgOperacaoRealizada", "Inclusão realizada com sucesso");
                         break;
                     case "Alterar":
-                        consultaDAO.Alterar(consulta);
+                      //  consultaDAO.Alterar(consulta);
                         request.setAttribute("msgOperacaoRealizada", "Alteração realizada com sucesso");
                         break;
 

@@ -1,3 +1,4 @@
+<%@page import="Model.MedicoDAO"%>
 <%@page import="Aplicacao.Atores.Medico"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -22,6 +23,15 @@
                 </div>
                 <div>
                     <a class="nav-link" href="./cadastroMedico.jsp">Cadastrar Médico</a>
+                </div>
+                <div>
+                    <a class="nav-link" href="./cadastroPacienteAdm.jsp">Cadastrar Paciente</a>
+                </div>
+                <div>
+                    <a class="nav-link" href="./cadastroTipoPlano.jsp">Cadastrar Plano</a>
+                </div>
+                <div>
+                    <a class="nav-link" href="./cadastroEspecialidade.jsp">Cadastrar Especialidade</a>
                 </div>
                 <div>
                     <a class="nav-link" href="./login.jsp">Logout</a>
@@ -100,46 +110,48 @@
                     </div>
                 </form>
                 <div class="table-responsive">
-                            <table class="table table-hover">
-                                <thead class="thead-dark">
-                                    <tr>
-                                        <th scope="col">Nome</th>
-                                        <th scope="col">CRM</th>
-                                        <th scope="col">Estado do CRM</th>
-                                        <th scope="col">CPF</th>
-                                        <th scope="col">Senha</th>
-                                        <th scope="col">Autorizado</th>
-                                        <th scope="col">Especialidade</th>
-                                        <th scope="col">Excluir</th>
-                                        <th scope="col">Alterar</th>
+                    <table class="table table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Nome</th>
+                                <th scope="col">CRM</th>
+                                <th scope="col">Estado do CRM</th>
+                                <th scope="col">CPF</th>
+                                <th scope="col">Senha</th>
+                                <th scope="col">Autorizado</th>
+                                <th scope="col">Especialidade</th>
+                                <th scope="col">Excluir</th>
+                                <th scope="col">Alterar</th>
 
-                                    </tr>
-                                </thead>
-                                <tbody>
+                            </tr>
+                        </thead>
+                        <tbody>
 
+                            <%
 
-                                    <%
-                                        ArrayList<Medico> listaMedico = (ArrayList<Medico>) request.getAttribute("listaMedicos");
+                                MedicoDAO medicoDAO = new MedicoDAO();
+                                ArrayList<Medico> listaMedicos = medicoDAO.ListaDeMedicos();
+                                for (Medico medico : listaMedicos) {
+                                    out.println("<tr>");
+                                    out.println("<th>" + medico.getNome() + "</th>");
+                                    out.println("<th>" + medico.getCrm() + "</th>");
+                                    out.println("<th>" + medico.getEstadocrm() + "</th>");
+                                    out.println("<th>" + medico.getCpf() + "</th>");
+                                    out.println("<th>" + medico.getSenha() + "</th>");
+                                    out.println("<th>" + medico.getAutorizado() + "</th>");
+                                    out.println("<th>" + medico.getIdespecialidade() + "</th>");
+                            %>
 
-                                        for (Medico medico : listaMedico) {
-                                            out.println("<tr>");
-                                            out.println("<th>" + medico.getNome() + "</th>");
-                                            out.println("<th>" + medico.getCrm() + "</th>");
-                                            out.println("<th>" + medico.getEstadocrm() + "</th>");
-                                            out.println("<th>" + medico.getCpf() + "</th>");
+                        <td><a href="ConsultaServlet?acao=Excluir&id=<%=medico.getId()%>" type="submit" name="btEnviar" class="btn btn-danger">Excluir</button></td>
+                        <td><a href="ConsultaServlet?acao=Alterar&id=<%=medico.getId()%>" type="submit" name="btEnviar" class="btn btn-warning">Alterar</a></td>
 
-                                    %>
+                        <%   out.println("</tr>");
+                            }
+                        %>
 
-                                <td><a href="ConsultaServlet?acao=Excluir&id=<%=medico.getId()%>" type="submit" name="btEnviar" class="btn btn-danger">Excluir</button></td>
-                                <td><a href="ConsultaServlet?acao=Alterar&id=<%=medico.getId()%>" type="submit" name="btEnviar" class="btn btn-warning">Alterar</a></td>
-
-                                <%   out.println("</tr>");
-                                    }
-                                %>
-
-                                </tbody>
-                            </table>
-                        </div> 
+                        </tbody>
+                    </table>
+                </div> 
             </div>
         </section>
     </body>

@@ -23,6 +23,15 @@
                 <a class="nav-link" href="./cadastroMedico.jsp">Cadastrar Médico</a>
             </div>
             <div>
+                <a class="nav-link" href="./cadastroPacienteAdm.jsp">Cadastrar Paciente</a>
+            </div>
+            <div>
+                <a class="nav-link" href="./cadastroTipoPlano.jsp">Cadastrar Plano</a>
+            </div>
+            <div>
+                <a class="nav-link" href="./cadastroEspecialidade.jsp">Cadastrar Especialidade</a>
+            </div>
+            <div>
                 <a class="nav-link" href="./login.jsp">Logout</a>
             </div>
         </nav>
