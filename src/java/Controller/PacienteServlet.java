@@ -47,8 +47,7 @@ public class PacienteServlet extends HttpServlet {
             case "Excluir":
                 try {
                     int id = Integer.parseInt(request.getParameter("id"));
-                    paciente = pacienteDAO.getPacienteById(id);
-                    paciente.setId(id);
+                    pacienteDAO.Excluir(id);
                 } catch (Exception ex) {
                     System.out.println(ex.getMessage());
                     throw new RuntimeException("Falha em uma query para cadastro de paciente");
@@ -60,7 +59,8 @@ public class PacienteServlet extends HttpServlet {
         request.setAttribute("msgError", "");
         request.setAttribute("acao", acao);
 
-        rd = request.getRequestDispatcher("/menuPaciente.jsp");
+        
+        rd = request.getRequestDispatcher("/cadastroPacienteAdm.jsp");
         rd.forward(request, response);
 
     }
@@ -121,7 +121,7 @@ public class PacienteServlet extends HttpServlet {
 
                 ArrayList<Aplicacao.Atores.Paciente> listaPacientes = pacienteDAO.ListaDePacientes();
                 request.setAttribute("listaPacientes", listaPacientes);
-                rd = request.getRequestDispatcher("/login.jsp");
+                rd = request.getRequestDispatcher("/cadastroPacienteAdm.jsp");
                 rd.forward(request, response);
                 
             } catch (Exception ex) {

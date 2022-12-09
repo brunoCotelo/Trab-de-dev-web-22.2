@@ -20,6 +20,10 @@ public class TipoPlano {
      
     }
 
+    public TipoPlano(String descricao) {
+        this.descricao = descricao;
+    }
+
     public int getId() {
         return id;
     }

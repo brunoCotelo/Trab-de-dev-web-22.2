@@ -45,7 +45,6 @@
             <h2 style="text-align: center;" class="margin"> Cadastro de um paciente</h2>
             <div class="container-fluid formCadstroPaciente">
                 <form action="PacienteServlet" method="POST">
-
                     <div class="container">
                         <div class="row">
                             <div class="mb-auto col-lg-4 mx-auto">
@@ -111,8 +110,8 @@
 
                         %>
 
-                    <td><a href="TipoPlanoServlet?acao=Excluir&id=<%=paciente.getId()%>" type="submit" name="btEnviar" class="btn btn-danger">Excluir</button></td>
-                    <td><a href="TipoPlanoServlet?acao=Alterar&id=<%=paciente.getId()%>" type="submit" name="btEnviar" class="btn btn-warning">Alterar</a></td>
+                    <td><a href="PacienteServlet?acao=Excluir&id=<%=paciente.getId()%>" type="submit" name="btEnviar" class="btn btn-danger">Excluir</button></td>
+                    <td><a href="PacienteServlet?acao=Alterar&id=<%=paciente.getId()%>" type="submit" name="btEnviar" class="btn btn-warning">Alterar</a></td>
 
                     <%   out.println("</tr>");
                         }

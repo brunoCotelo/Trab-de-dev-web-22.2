@@ -42,19 +42,19 @@
         <section id="formCadastroTipoPlano">
             <h2 style="text-align: center;" class="margin">Cadastro do tipo de um Plano</h2>
             <div class="container-fluid formCadastroTipoPlano">
+                <form action="PlanoServlet" method="POST">
                 <div class="container">
                     <div class="row">
                         <div class="container-fluid col-lg-8 mx-auto margin">
-                            <label for="descricaoDaEspecialidade" class="form-label"><b>Descrição do Tipo do Plano</b></label>
-                            <input name="tipoPlano" class="form-control" id="inputTipoPlano">
+                            <label for="descricao" class="form-label"><b>Descrição do Tipo do Plano</b></label>
+                            <input name="descricao" class="form-control" id="descricao">
                         </div>
                     </div>
-                    <div class="container-fluid">
-                        <div class="mx-auto margin" style="width: 200px;">
-                            <input type="submit" value="Cadastrar tipo de Plano" class="btn btn-primary"/>
-                        </div>
+                    <div class="mx-auto margin" style="width: 200px;">
+                        <button type="submit" name="btEnviar" class="btn btn-primary"><input hidden name ="acao" id="acao" value="cadastrar">Cadastrar</button>
                     </div>
                 </div>
+                </form>
                 <table class="table table-bordereds">
                     <thead>
                         <tr>
@@ -72,8 +72,8 @@
                                 out.println("<tr>");
                                 out.println("<th>" + tipoPlano.getDescricao() + "</th>");%>
 
-                    <td><a href="TipoPlanoServlet?acao=Excluir&id=<%=tipoPlano.getId()%>" type="submit" name="btEnviar" class="btn btn-danger">Excluir</button></td>
-                    <td><a href="TipoPlanoServlet?acao=Alterar&id=<%=tipoPlano.getId()%>" type="submit" name="btEnviar" class="btn btn-warning">Alterar</a></td>
+                    <td><a href="PlanoServlet?acao=Excluir&id=<%=tipoPlano.getId()%>" type="submit" name="btEnviar" class="btn btn-danger">Excluir</button></td>
+                    <td><a href="PlanoServlet?acao=Alterar&id=<%=tipoPlano.getId()%>" type="submit" name="btEnviar" class="btn btn-warning">Alterar</a></td>
 
                     <%   out.println("</tr>");
                         }
@@ -84,3 +84,4 @@
             </div>
         </section>
     </body>
+</html>

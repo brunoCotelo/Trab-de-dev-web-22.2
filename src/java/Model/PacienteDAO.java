@@ -75,11 +75,11 @@ public class PacienteDAO {
         }
     }
 
-    public void Excluir(Paciente paciente) throws Exception {
+    public void Excluir(int id) throws Exception {
         Conexao conexao = new Conexao();
         try {
             PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM paciente WHERE ID = ? ");
-            sql.setInt(1, paciente.getId());
+            sql.setInt(1, id);
             sql.executeUpdate();
 
         } catch (SQLException e) {
