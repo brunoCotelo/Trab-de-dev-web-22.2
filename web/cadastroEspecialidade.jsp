@@ -42,19 +42,21 @@
         <section id="formCadastroEspecialidade">
             <h2 style="text-align: center;" class="margin">Cadastro de uma especialidade</h2>
             <div class="container-fluid formCadastroEspecialidade">
+                <form action="EspecialidadeServlet" method="POST">
                 <div class="container">
                     <div class="row">
                         <div class="container-fluid col-lg-8 mx-auto margin">
-                            <label for="descricaoDaEspecialidade" class="form-label"><b>Descrição da Especialidade</b></label>
-                            <input name="especialidade" class="form-control" id="inputDaEspecialidade">
+                            <label for="descricao" class="form-label"><b>Descrição da Especialidade</b></label>
+                            <input name="descricao" class="form-control" id="descricao">
                         </div>
                     </div>
                     <div class="container-fluid">
                         <div class="mx-auto margin" style="width: 200px;">
-                            <input type="submit" value="Cadastrar especialidade" class="btn btn-primary"/>
+                             <button type="submit" name="btEnviar" class="btn btn-primary"><input hidden name ="acao" id="acao" value="cadastrar">Cadastrar</button>
                         </div>
                     </div>
                 </div>
+                </form>
                 <table class="table table-bordereds">
                     <thead>
                         <tr>
@@ -72,8 +74,8 @@
                                 out.println("<tr>");
                                 out.println("<th>" + especialidade.getDescricao() + "</th>");%>
 
-                    <td><a href="TipoPlanoServlet?acao=Excluir&id=<%=especialidade.getId()%>" type="submit" name="btEnviar" class="btn btn-danger">Excluir</button></td>
-                    <td><a href="TipoPlanoServlet?acao=Alterar&id=<%=especialidade.getId()%>" type="submit" name="btEnviar" class="btn btn-warning">Alterar</a></td>
+                    <td><a href="EspecialidadeServlet?acao=Excluir&id=<%=especialidade.getId()%>" type="submit" name="btEnviar" class="btn btn-danger">Excluir</button></td>
+                    <td><a href="EspecialidadeServlet?acao=Alterar&id=<%=especialidade.getId()%>" type="submit" name="btEnviar" class="btn btn-warning">Alterar</a></td>
 
                     <%   out.println("</tr>");
                         }

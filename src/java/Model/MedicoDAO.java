@@ -15,7 +15,7 @@ public class MedicoDAO {
     public void Inserir(Medico medico) throws Exception {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("\"INSERT INTO medico(nome, crm, estadocrm, cpf, senha, autorizado, idespecialidade)"
+            PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO medico(nome, crm, estadocrm, cpf, senha, autorizado, idespecialidade)"
                     + " VALUES (?, ?, ?, ?, ?, ?, ?)");
             sql.setString(1, medico.getNome());
             sql.setInt(2, medico.getCrm());

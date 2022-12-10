@@ -48,6 +48,7 @@ public class PacienteServlet extends HttpServlet {
                 try {
                     int id = Integer.parseInt(request.getParameter("id"));
                     pacienteDAO.Excluir(id);
+                    request.setAttribute("msgOperacaoRealizada", "Exclusão realizada com sucesso");
                 } catch (Exception ex) {
                     System.out.println(ex.getMessage());
                     throw new RuntimeException("Falha em uma query para cadastro de paciente");

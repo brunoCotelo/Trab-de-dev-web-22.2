@@ -1,3 +1,5 @@
+<%@page import="Aplicacao.consulta_exame_descricao.Especialidade"%>
+<%@page import="Model.EspecialidadeDAO"%>
 <%@page import="Model.MedicoDAO"%>
 <%@page import="Aplicacao.Atores.Medico"%>
 <%@page import="java.util.ArrayList"%>
@@ -42,16 +44,16 @@
         <section id="formCadstroMedico">
             <h2 style="text-align: center;" class="margin"> Cadastro de um médico</h2>
             <div class="container-fluid formCadstroMedico">
-                <form>
+                <form action="MedicoServlet" method="POST">
                     <div class="container">
                         <div class="row">
                             <div class="mb-auto col-lg-4 margin">
-                                <label for="nomeMedico" class="form-label"><b>Nome</b></label>
-                                <input class="form-control" id="inputNomeMedico">
+                                <label for="nome" class="form-label"><b>Nome</b></label>
+                                <input class="form-control" name="nome" id="nome">
                             </div>
                             <div class="mb-auto col-lg-2 margin">
-                                <label for="crmMedico" class="form-label"><b>CRM</b></label>
-                                <input class="form-control" id="inputCRMMedico">
+                                <label for="crm" class="form-label"><b>CRM</b></label>
+                                <input class="form-control" name="crm"id="crm">
                             </div>
                             <div class="form-group col-lg-3 mx-auto margin">
                                 <label><b>Estado do CRM</b></label>
@@ -87,12 +89,12 @@
                                 </select><br><br>
                             </div>
                             <div class="mb-auto col-lg-2 margin">
-                                <label for="cpfMedico" class="form-label"><b>CPF</b></label>
-                                <input class="form-control" id="inputCPFMedico" placeholder="______.______.______-____">
+                                <label for="cpf" class="form-label"><b>CPF</b></label>
+                                <input class="form-control" name="cpf" id="cpf" placeholder="______.______.______-____">
                             </div>
                             <div class="container-fluid col-lg-2 mx-auto margin">
-                                <label for="senhaFuncLogin" class="form-label"><b>Senha</b></label>
-                                <input name="senha" type="password" class="form-control" id="inputSenhaFuncLogin">
+                                <label for="senha" class="form-label"><b>Senha</b></label>
+                                <input name="senha" type="password" name="senha" class="form-control" id="senha">
                             </div>
                             <div class="form-group col-lg-3 mx-auto margin">
                                 <label><b>Autorizado</b></label>
@@ -101,6 +103,25 @@
                                     <option value="N">Não</option>
                                 </select>
                             </div>
+                            <div class="container-fluid col-lg-2 mx-auto margin">
+                            <label for="especialidade" class="form-label"><b>Especialidade</b></label>
+                            <select name="especialidade" id="especialidade">
+
+                                <%
+                                    EspecialidadeDAO especialidadeDAO = new EspecialidadeDAO();
+                                    ArrayList<Especialidade> listaEspecialidades = especialidadeDAO.ListaDeEspecialidade();
+                                    String nomeEspecialidade = "";
+                                        for (Especialidade especialidade : listaEspecialidades) {
+                                                nomeEspecialidade = especialidade.getDescricao();
+                                         %>
+
+                                <%
+                                        out.println("<option value=" + especialidade.getId() + ">" + nomeEspecialidade + "</option>");%>
+                                <%
+                                    }
+                                %>
+                            </select>
+                        </div>
                             <div class="row">
                                 <div class="mx-auto margin" style="width: 200px;">
                                     <button type="submit" name="btEnviar" class="btn btn-primary"><input hidden name ="acao" id="acao" value="cadastrar">Cadastrar</button>
@@ -142,8 +163,8 @@
                                     out.println("<th>" + medico.getIdespecialidade() + "</th>");
                             %>
 
-                        <td><a href="ConsultaServlet?acao=Excluir&id=<%=medico.getId()%>" type="submit" name="btEnviar" class="btn btn-danger">Excluir</button></td>
-                        <td><a href="ConsultaServlet?acao=Alterar&id=<%=medico.getId()%>" type="submit" name="btEnviar" class="btn btn-warning">Alterar</a></td>
+                        <td><a href="MedicoServlet?acao=Excluir&id=<%=medico.getId()%>" type="submit" name="btEnviar" class="btn btn-danger">Excluir</button></td>
+                        <td><a href="MedicoServlet?acao=Alterar&id=<%=medico.getId()%>" type="submit" name="btEnviar" class="btn btn-warning">Alterar</a></td>
 
                         <%   out.println("</tr>");
                             }

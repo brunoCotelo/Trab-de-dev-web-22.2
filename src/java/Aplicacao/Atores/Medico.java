@@ -36,6 +36,14 @@ public class Medico extends Usuario {
         super(cpf, senha);
     }
 
+    public Medico(String nome, int crm, String estadocrm, String cpf, String senha, String autorizado) {
+        super(nome, cpf, senha, TipoPerfil.MEDICO);
+        this.crm = crm;
+        this.estadocrm = estadocrm;
+        this.autorizado = autorizado;
+    }
+
+
      public int getId() {
         return id;
     }

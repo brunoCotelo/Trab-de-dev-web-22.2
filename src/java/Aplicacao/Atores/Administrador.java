@@ -17,6 +17,10 @@ public class Administrador extends Usuario{
     }
     
 
+        public Administrador(String nome, String cpf, String senha) {
+        super(nome, cpf, senha, TipoPerfil.ADMINISTRADOR);
+    }
+    
     public Administrador() {
         
     }

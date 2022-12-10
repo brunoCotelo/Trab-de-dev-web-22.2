@@ -34,7 +34,7 @@
         <section id="formCadastroConsulta">
             <h2 style="text-align: center;" class="margin">Cadastro de uma consulta</h2>
             <div class="container-fluid formCadastroConsulta">
-                <form action="ConsultaServlet" method="POST">
+                <form action="MedicoServletConsulta" method="POST">
                     <div class="container">
                         <div class="table-responsive">
                             <table class="table table-hover">

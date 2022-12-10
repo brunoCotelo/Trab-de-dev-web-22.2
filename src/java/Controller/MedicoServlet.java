@@ -1,7 +1,6 @@
 package Controller;
 
 import Aplicacao.Atores.Medico;
-import Aplicacao.Atores.Paciente;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
@@ -9,7 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import Model.ConsultaDAO;
 import Model.MedicoDAO;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
@@ -29,9 +27,6 @@ public class MedicoServlet extends HttpServlet {
         switch (acao) {
             case "Listar":
                 try {
-                    HttpSession session = request.getSession();
-                    Medico usuario = new Medico();
-                    usuario = (Medico) session.getAttribute("usuario");
                     ArrayList<Aplicacao.Atores.Medico> listaMedicos = medicoDAO.ListaDeMedicos();
                     request.setAttribute("msgOperacaoRealizada", "");
                     request.setAttribute("listaMedicos", listaMedicos);
@@ -40,10 +35,10 @@ public class MedicoServlet extends HttpServlet {
 
                 } catch (IOException | ServletException ex) {
                     System.out.println(ex.getMessage());
-                    throw new RuntimeException("Falha na query listar consultas (Medico) ");
+                    throw new RuntimeException("Falha na query listar medicos (Medico) ");
                 }
                 break;
-            //case "Alterar":
+            case "Alterar":
             case "Excluir":
 
                 try {
@@ -53,7 +48,7 @@ public class MedicoServlet extends HttpServlet {
 
                 } catch (Exception ex) {
                     System.out.println(ex.getMessage());
-                    throw new RuntimeException("Falha em uma query para exclusão de consulta");
+                    throw new RuntimeException("Falha em uma query para exclusão de medico");
                 }
                 break;
 
@@ -62,7 +57,7 @@ public class MedicoServlet extends HttpServlet {
         request.setAttribute("msgError", "");
         request.setAttribute("acao", acao);
 
-        rd = request.getRequestDispatcher("/login.jsp");
+        rd = request.getRequestDispatcher("/cadastroMedico.jsp");
         //response.sendRedirect("/BrunoCotelo/menuPaciente.jsp");
         rd.forward(request, response);
 
@@ -74,21 +69,21 @@ public class MedicoServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
 
-        String data_consulta = request.getParameter("data");
-        String descricao_consulta = request.getParameter("descricao");
-        String realizada_consulta = request.getParameter("realizada");
-        int idmedico_consulta = 2;
-        //HttpSession session = request.getSession();
-        Paciente paciente = (Paciente) session.getAttribute("usuario");
-        int idpaciente_consulta = paciente.getId();
+        String nome_user = request.getParameter("nome");
+        int crm_user = Integer.parseInt(request.getParameter("crm"));
+        String estadocrm_user = request.getParameter("estadocrm");
+        String cpf_user = request.getParameter("cpf");
+        String senha_user = request.getParameter("senha");
+        String autorizado_user = request.getParameter("autorizado");
+        int especialidade_user = Integer.parseInt(request.getParameter("especialidade"));
         String acao = request.getParameter("acao");
         RequestDispatcher rd;
 
 //        if(acao == "cadastrar"){
 //        
 //        }
-        if (data_consulta.isEmpty() || idmedico_consulta == 0 || idpaciente_consulta == 0) {
-            Medico consulta = new Medico();
+        if (nome_user.isEmpty() || crm_user == 0 || cpf_user.isEmpty() || estadocrm_user.isEmpty() || senha_user.isEmpty() || autorizado_user.isEmpty() || especialidade_user == 0) {
+            Medico medico = new Medico();
             switch (acao) {
                 case "cadastrar":
                     request.setAttribute("acao", "cadastrar");
@@ -103,35 +98,39 @@ public class MedicoServlet extends HttpServlet {
                 }
 
             request.setAttribute("msgError", "É necessário preencher todos os campos");
-            request.setAttribute("consulta", consulta);
+            request.setAttribute("medico", medico);
 
-            rd = request.getRequestDispatcher("/menuPaciente.jsp");
+            rd = request.getRequestDispatcher("/cadastroMedico.jsp");
             rd.forward(request, response);
 
         } else {
-           // Medico consulta = new Medico(data_consulta, descricao_consulta, realizada_consulta, idmedico_consulta, idpaciente_consulta);
-            ConsultaDAO consultaDAO = new ConsultaDAO();
+            Medico medico = new Medico(nome_user, crm_user, estadocrm_user, cpf_user, senha_user, autorizado_user, especialidade_user);
+            MedicoDAO medicoDAO = new MedicoDAO();
             try {
                 switch (acao) {
                     case "cadastrar":
-                       // consultaDAO.Inserir(consulta);
+                        medicoDAO.Inserir(medico);
                         request.setAttribute("msgOperacaoRealizada", "Inclusão realizada com sucesso");
                         break;
                     case "Alterar":
-                      //  consultaDAO.Alterar(consulta);
+                        medicoDAO.Alterar(medico);
                         request.setAttribute("msgOperacaoRealizada", "Alteração realizada com sucesso");
                         break;
+//                    case "Excluir":
+//                        medicoDAO.Excluir(id);
+//                        request.setAttribute("msgOperacaoRealizada", "Exclusão realizada com sucesso");
+//                        break;
 
                 }
 
-                ArrayList<Aplicacao.consulta_exame_descricao.Consulta> listaConsultas = consultaDAO.ListaDeConsultaPaciente(idpaciente_consulta);
-                request.setAttribute("listaConsultas", listaConsultas);
-                rd = request.getRequestDispatcher("/menuPaciente.jsp");
+                ArrayList<Aplicacao.Atores.Medico> listaMedicos = medicoDAO.ListaDeMedicos();
+                request.setAttribute("listaMedicos", listaMedicos);
+                rd = request.getRequestDispatcher("/cadastroMedico.jsp");
                 rd.forward(request, response);
 
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
-                throw new RuntimeException("Falha em uma query para cadastro de consulta");
+                throw new RuntimeException("Falha em uma query para cadastro de medico");
             }
         }
     }

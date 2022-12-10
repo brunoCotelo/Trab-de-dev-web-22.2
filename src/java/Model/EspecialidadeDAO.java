@@ -62,11 +62,11 @@ public class EspecialidadeDAO {
         }
     }
 
-    public void Excluir(Especialidade especialidade) throws Exception {
+    public void Excluir(int id) throws Exception {
         Conexao conexao = new Conexao();
         try {
             PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM especialidade WHERE ID = ? ");
-            sql.setInt(1, especialidade.getId());
+            sql.setInt(1, id);
             sql.executeUpdate();
 
         } catch (SQLException e) {

@@ -8,9 +8,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import Aplicacao.Atores.Administrador;
-import Aplicacao.Atores.Usuario;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 
 public class AdmDAO {//implements IUsuarioDAO
@@ -19,7 +16,7 @@ public class AdmDAO {//implements IUsuarioDAO
         Conexao conexao = new Conexao();
         try {
             PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO administrador(nome, cpf, senha)"
-                    + " VALUES (?, ?, ?, ?, ?)");
+                    + " VALUES (?, ?, ?)");
             sql.setString(1, administrador.getNome());
             sql.setString(2, administrador.getCpf());
             sql.setString(3, administrador.getSenha());
@@ -72,11 +69,11 @@ public class AdmDAO {//implements IUsuarioDAO
         }
     }
 
-    public void Excluir(Administrador administrador) throws Exception {
+    public void Excluir(int id) throws Exception {
         Conexao conexao = new Conexao();
         try {
             PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM administrador WHERE ID = ? ");
-            sql.setInt(1, administrador.getId());
+            sql.setInt(1, id);
             sql.executeUpdate();
 
         } catch (SQLException e) {

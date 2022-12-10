@@ -3,7 +3,7 @@
 <%@page import="Model.AdmDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-    <html lang="pt-br">
+<html lang="pt-br">
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -15,55 +15,55 @@
     <body style="background-color: rgb(210, 240, 245);">
         <header>
             <nav class="navbar navbar-light bg-faded" style="background-color: rgb(0, 0, 0); border-color: #000; justify-content: normal;">
-               <a class="navbar-brand" href="#">
-                <img src="imagens/download.png" width="100" height="100">
-            </a>
-            <div>
-                <a class="nav-link" href="./menuAdm.jsp">Home</a>
-            </div>
-            <div>
-                <a class="nav-link" href="./cadastroMedico.jsp">Cadastrar Médico</a>
-            </div>
-            <div>
-                <a class="nav-link" href="./cadastroPacienteAdm.jsp">Cadastrar Paciente</a>
-            </div>
-            <div>
-                <a class="nav-link" href="./cadastroTipoPlano.jsp">Cadastrar Plano</a>
-            </div>
-            <div>
-                <a class="nav-link" href="./cadastroEspecialidade.jsp">Cadastrar Especialidade</a>
-            </div>
-            <div>
-                <a class="nav-link" href="./cadastroAdministrador.jsp">Cadastrar Administrador</a>
-            </div>
-            <div>
-                <a class="nav-link" href="./login.jsp">Logout</a>
-            </div>
+                <a class="navbar-brand" href="#">
+                    <img src="imagens/download.png" width="100" height="100">
+                </a>
+                <div>
+                    <a class="nav-link" href="./menuAdm.jsp">Home</a>
+                </div>
+                <div>
+                    <a class="nav-link" href="./cadastroMedico.jsp">Cadastrar Médico</a>
+                </div>
+                <div>
+                    <a class="nav-link" href="./cadastroPacienteAdm.jsp">Cadastrar Paciente</a>
+                </div>
+                <div>
+                    <a class="nav-link" href="./cadastroTipoPlano.jsp">Cadastrar Plano</a>
+                </div>
+                <div>
+                    <a class="nav-link" href="./cadastroEspecialidade.jsp">Cadastrar Especialidade</a>
+                </div>
+                <div>
+                    <a class="nav-link" href="./cadastroAdministrador.jsp">Cadastrar Administrador</a>
+                </div>
+                <div>
+                    <a class="nav-link" href="./login.jsp">Logout</a>
+                </div>
             </nav>
         </header>
 
         <section id="formCadstroMedico">
             <h2 style="text-align: center;" class="margin"> Cadastro de um administrador</h2>
             <div class="container-fluid formCadstroAdm">
-                <form>
+                <form action="AdmServlet" method="POST">
                     <div class="container">
                         <div class="row">
                             <div class="mb-auto col-lg-4 mx-auto margin">
-                                <label for="nomeAdm" class="form-label"><b>Nome</b></label>
-                                <input class="form-control" id="inputNomeAdm">
+                                <label for="nome" class="form-label"><b>Nome</b></label>
+                                <input class="form-control" name="nome" id="inputNomeAdm">
                             </div>
                             <div class="mb-auto col-lg-2 mx-auto margin">
-                                <label for="cpfAdm" class="form-label"><b>CPF</b></label>
-                                <input class="form-control" id="inputCPFAdm" placeholder="______.______.______-____">
+                                <label for="cpf" class="form-label"><b>CPF</b></label>
+                                <input class="form-control" name="cpf" id="cpf" placeholder="______.______.______-____">
                             </div>
                             <div class="container-fluid col-lg-2 mx-auto margin">
-                                <label for="senhaAdm" class="form-label"><b>Senha</b></label>
-                                <input name="senha" type="password" class="form-control" id="inputSenhaAdm">
+                                <label for="senha" class="form-label"><b>Senha</b></label>
+                                <input name="senha" type="password" class="form-control" id="senha">
                             </div>
                         </div>
                         <div class="row">
                             <div class="mx-auto margin" style="width: 200px;">
-                                <button type="submit" class="btn btn-primary">Cadastrar Administrador</button>
+                                <button type="submit" name="btEnviar" class="btn btn-primary"><input hidden name ="acao" id="acao" value="cadastrar">Cadastrar</button>
                             </div>
                         </div>
                     </div>
@@ -93,8 +93,8 @@
                                     out.println("<th>" + administrador.getSenha() + "</th>");
                             %>
 
-                        <td><a href="ConsultaServlet?acao=Excluir&id=<%=administrador.getId()%>" type="submit" name="btEnviar" class="btn btn-danger">Excluir</button></td>
-                        <td><a href="ConsultaServlet?acao=Alterar&id=<%=administrador.getId()%>" type="submit" name="btEnviar" class="btn btn-warning">Alterar</a></td>
+                        <td><a href="AdmServlet?acao=Excluir&id=<%=administrador.getId()%>" type="submit" name="btEnviar" class="btn btn-danger">Excluir</button></td>
+                        <td><a href="AdmServlet?acao=Alterar&id=<%=administrador.getId()%>" type="submit" name="btEnviar" class="btn btn-warning">Alterar</a></td>
 
                         <%   out.println("</tr>");
                             }
@@ -102,7 +102,7 @@
 
                         </tbody>
                     </table>
-            </div>
+                </div>
         </section>
     </body>
 
