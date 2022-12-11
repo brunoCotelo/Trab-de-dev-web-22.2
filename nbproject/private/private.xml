@@ -4,14 +4,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/bruno/Desktop/Trabalho%20Bruno%20Cotelo/BrunoCotelo/src/java/Controller/MedicoServlet.java</file>
-            <file>file:/C:/Users/bruno/Desktop/Trabalho%20Bruno%20Cotelo/BrunoCotelo/web/edicaoDeConsulta.jsp</file>
+            <file>file:/C:/Users/bruno/Desktop/Trabalho%20Bruno%20Cotelo/BrunoCotelo/src/java/Aplicacao/Atores/Administrador.java</file>
             <file>file:/C:/Users/bruno/Desktop/Trabalho%20Bruno%20Cotelo/BrunoCotelo/web/cadastroMedico.jsp</file>
-            <file>file:/C:/Users/bruno/Desktop/Trabalho%20Bruno%20Cotelo/BrunoCotelo/web/menuMedicoConsulta.jsp</file>
-            <file>file:/C:/Users/bruno/Desktop/Trabalho%20Bruno%20Cotelo/BrunoCotelo/src/java/Controller/PacienteServlet.java</file>
-            <file>file:/C:/Users/bruno/Desktop/Trabalho%20Bruno%20Cotelo/BrunoCotelo/src/java/Aplicacao/Atores/Medico.java</file>
-            <file>file:/C:/Users/bruno/Desktop/Trabalho%20Bruno%20Cotelo/BrunoCotelo/src/java/Model/MedicoDAO.java</file>
-            <file>file:/C:/Users/bruno/Desktop/Trabalho%20Bruno%20Cotelo/BrunoCotelo/web/cadastroEspecialidade.jsp</file>
-            <file>file:/C:/Users/bruno/Desktop/Trabalho%20Bruno%20Cotelo/BrunoCotelo/src/java/Controller/MedicoServletConsulta.java</file>
+            <file>file:/C:/Users/bruno/Desktop/Trabalho%20Bruno%20Cotelo/BrunoCotelo/web/cadastroAdministrador.jsp</file>
+            <file>file:/C:/Users/bruno/Desktop/Trabalho%20Bruno%20Cotelo/BrunoCotelo/src/java/Model/PacienteDAO.java</file>
+            <file>file:/C:/Users/bruno/Desktop/Trabalho%20Bruno%20Cotelo/BrunoCotelo/src/java/Model/AdmDAO.java</file>
+            <file>file:/C:/Users/bruno/Desktop/Trabalho%20Bruno%20Cotelo/BrunoCotelo/src/java/Controller/AdmServlet.java</file>
         </group>
     </open-files>
 </project-private>

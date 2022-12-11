@@ -21,23 +21,26 @@
                     <img src="imagens/download.png" width="100" height="100">
                 </a>
                 <div>
-                    <a class="nav-link" href="./menuAdm.jsp">Home</a>
-                </div>
-                <div>
-                    <a class="nav-link" href="./cadastroMedico.jsp">Cadastrar Médico</a>
-                </div>
-                <div>
-                    <a class="nav-link" href="./cadastroPacienteAdm.jsp">Cadastrar Paciente</a>
-                </div>
-                <div>
-                    <a class="nav-link" href="./cadastroTipoPlano.jsp">Cadastrar Plano</a>
-                </div>
-                <div>
-                    <a class="nav-link" href="./cadastroEspecialidade.jsp">Cadastrar Especialidade</a>
-                </div>
-                <div>
-                    <a class="nav-link" href="./login.jsp">Logout</a>
-                </div>
+                <a class="nav-link" href="./menuAdm.jsp">Home</a>
+            </div>
+            <div>
+                <a class="nav-link" href="./cadastroMedico.jsp">Cadastrar Médico</a>
+            </div>
+            <div>
+                <a class="nav-link" href="./cadastroPacienteAdm.jsp">Cadastrar Paciente</a>
+            </div>
+            <div>
+                <a class="nav-link" href="./cadastroTipoPlano.jsp">Cadastrar Plano</a>
+            </div>
+            <div>
+                <a class="nav-link" href="./cadastroEspecialidade.jsp">Cadastrar Especialidade</a>
+            </div>
+            <div>
+                <a class="nav-link" href="./cadastroAdministrador.jsp">Cadastrar Administrador</a>
+            </div>
+            <div>
+                <a class="nav-link" href="./login.jsp">Logout</a>
+            </div>
             </nav>
         </header>
 
